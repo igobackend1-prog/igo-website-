@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import SEO from '@/components/SEO';
 import {
   CheckCircle2,
   MessageSquare,
@@ -117,8 +118,26 @@ const CategoryView: React.FC<{ category: string }> = ({ category }) => {
     );
   }
 
+  const catBreadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.igoagritechfarms.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://www.igoagritechfarms.com/products" },
+      { "@type": "ListItem", "position": 3, "name": meta.label, "item": `https://www.igoagritechfarms.com/products/${category}` }
+    ]
+  };
+
   return (
     <div className="bg-white min-h-screen selection:bg-[#E8F5E9] selection:text-[#1A4231]">
+      <SEO
+        title={`${meta.label} Products`}
+        description={`${meta.desc} Buy ${meta.label.toLowerCase()} from IGO Agritech Farms — premium quality, pan-India delivery, bulk pricing available.`}
+        keywords={`${meta.label}, agricultural products India, buy farming products, IGO Agritech Farms`}
+        url={`/products/${category}`}
+        image={meta.cardImage}
+        jsonLd={catBreadcrumb}
+      />
 
       {/* Hero strip */}
       <section className="relative pt-36 pb-24 bg-black overflow-hidden">
@@ -267,8 +286,44 @@ const DetailView: React.FC<{ product: ProductDetail; category: string }> = ({ pr
     { id: 'bulk' as const, label: 'Bulk Institutional', value: product.pricing.bulk }
   ];
 
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.name,
+    "description": product.description,
+    "image": imgUrl.startsWith("/") ? `https://www.igoagritechfarms.com${imgUrl}` : imgUrl,
+    "brand": { "@type": "Brand", "name": "IGO Agritech Farms" },
+    "category": product.categoryName,
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "INR",
+      "price": product.pricing.retail,
+      "availability": "https://schema.org/InStock",
+      "seller": { "@type": "Organization", "name": "IGO Agritech Farms" }
+    }
+  };
+
+  const productBreadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.igoagritechfarms.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://www.igoagritechfarms.com/products" },
+      { "@type": "ListItem", "position": 3, "name": meta?.label || category, "item": `https://www.igoagritechfarms.com/products/${category}` },
+      { "@type": "ListItem", "position": 4, "name": product.name, "item": `https://www.igoagritechfarms.com/products/${category}/${product.id}` }
+    ]
+  };
+
   return (
     <div className="bg-white min-h-screen pt-24 pb-20 selection:bg-[#E8F5E9] selection:text-[#1A4231]">
+      <SEO
+        title={product.name}
+        description={`Buy ${product.name} from IGO Agritech Farms. ${product.description.slice(0, 100)} Starting from ₹${product.pricing.retail.toLocaleString()}. Pan-India delivery.`}
+        keywords={`${product.name}, ${product.categoryName}, buy ${product.categoryName.toLowerCase()}, IGO Agritech Farms, agricultural products`}
+        url={`/products/${category}/${product.id}`}
+        image={imgUrl.startsWith("/") ? imgUrl : undefined}
+        jsonLd={{ "@context": "https://schema.org", "@graph": [productBreadcrumb, productSchema] }}
+      />
       <div className="container mx-auto px-6">
 
         {/* Breadcrumb */}

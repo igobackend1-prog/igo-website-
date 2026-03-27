@@ -3,6 +3,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useNavigate, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { motion } from "framer-motion";
+import SEO from "@/components/SEO";
 import { LogOut, Users, MessageSquare, BookOpen, Phone, ChevronRight } from "lucide-react";
 
 const AdminDashboard = () => {
@@ -63,6 +64,7 @@ const AdminDashboard = () => {
 
   return (
     <div className="min-h-screen bg-muted pt-24 pb-12">
+      <SEO title="Admin Dashboard" description="IGO Agritech Farms admin dashboard." noIndex />
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">

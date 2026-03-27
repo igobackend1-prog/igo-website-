@@ -3,6 +3,7 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { motion, Variants } from "framer-motion";
 import { ArrowLeft, ArrowRight, Shield, TrendingUp, CheckCircle2, MessageCircle, BadgeCheck } from "lucide-react";
 import { navLinks } from "@/data/siteData";
+import SEO from "@/components/SEO";
 
 const fader: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -128,6 +129,38 @@ const CATEGORY_FALLBACK: Record<string, string> = {
 
 const getImage = (label: string, cat: string) =>
   TYPE_IMG[label] || SUBCATEGORY_IMG[label] || CATEGORY_FALLBACK[cat] || "/assets/projects/main page/agri farming project .jpg";
+
+// ─── LazyCardImage — skeleton + lazy load + error fallback ───────────────────
+const LazyCardImage: React.FC<{
+  src: string;
+  alt: string;
+  fallbackSrc: string;
+  priority?: boolean;
+}> = ({ src, alt, fallbackSrc, priority = false }) => {
+  const [loaded, setLoaded] = React.useState(false);
+  return (
+    <>
+      <div className={`absolute inset-0 bg-[#E8F0EA] transition-opacity duration-300 ${loaded ? "opacity-0 pointer-events-none" : "opacity-100 animate-pulse"}`} />
+      <img
+        src={src}
+        alt={alt}
+        loading={priority ? "eager" : "lazy"}
+        onLoad={() => setLoaded(true)}
+        onError={e => {
+          const el = e.currentTarget as HTMLImageElement;
+          if (el.src !== fallbackSrc) el.src = fallbackSrc;
+        }}
+        className="absolute inset-0 w-full h-full object-cover group-hover:scale-110"
+        style={{
+          opacity: loaded ? 1 : 0,
+          transitionProperty: "opacity, transform",
+          transitionDuration: "0.5s, 1.2s",
+          transitionTimingFunction: "ease-in-out, cubic-bezier(0.16, 1, 0.3, 1)",
+        }}
+      />
+    </>
+  );
+};
 
 // ─── Rich content data ────────────────────────────────────────────────────────
 const SUBCATEGORY_DESC: Record<string, string> = {
@@ -291,8 +324,26 @@ const CategoryView: React.FC<{ category: string }> = ({ category }) => {
   const heroImg = catItem.cardImage || CATEGORY_FALLBACK[category];
   const allCategories = getProjectLinks();
 
+  const catBreadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.igoagritechfarms.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.igoagritechfarms.com/projects" },
+      { "@type": "ListItem", "position": 3, "name": catItem.label, "item": `https://www.igoagritechfarms.com/projects/${category}` }
+    ]
+  };
+
   return (
     <div className="bg-[#FDFDFD] min-h-screen selection:bg-[#E8F5E9] selection:text-[#1A4231]">
+      <SEO
+        title={`${catItem.label} Projects`}
+        description={`Explore ${catItem.label} projects by IGO Agritech Farms. Turnkey agricultural project setup with expert engineering, site survey, and operational training across India.`}
+        keywords={`${catItem.label}, agricultural projects India, IGO Agritech Farms, farming projects`}
+        url={`/projects/${category}`}
+        image={heroImg || undefined}
+        jsonLd={catBreadcrumb}
+      />
       {/* Hero */}
       <section className="relative pt-40 pb-40 overflow-hidden bg-black">
         <motion.div
@@ -362,7 +413,7 @@ const CategoryView: React.FC<{ category: string }> = ({ category }) => {
                 transition={{ duration: 0.75, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Link to={sub.href} className="group relative block aspect-[4/3] rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
-                  <img src={img} alt={sub.label} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.2s]" />
+                  <LazyCardImage src={img} alt={sub.label} fallbackSrc={CATEGORY_FALLBACK[category]} priority={i === 0} />
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-black/70 transition-all duration-500" />
                   {/* Count pill */}
@@ -417,8 +468,27 @@ const SubcategoryView: React.FC<{ category: string; subcategory: string }> = ({ 
   if (!subItem || !catItem) return <Navigate to={`/projects/${category}`} />;
   const heroImg = SUBCATEGORY_IMG[subItem.label] || CATEGORY_FALLBACK[category];
 
+  const subBreadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.igoagritechfarms.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.igoagritechfarms.com/projects" },
+      { "@type": "ListItem", "position": 3, "name": catItem.label, "item": `https://www.igoagritechfarms.com/projects/${category}` },
+      { "@type": "ListItem", "position": 4, "name": subItem.label, "item": `https://www.igoagritechfarms.com/projects/${category}/${subcategory}` }
+    ]
+  };
+
   return (
     <div className="bg-[#FDFDFD] min-h-screen selection:bg-[#E8F5E9] selection:text-[#1A4231]">
+      <SEO
+        title={subItem.label}
+        description={SUBCATEGORY_DESC[subItem.label] || `${subItem.label} projects by IGO Agritech Farms. Precision-engineered solutions with turnkey installation, training, and AMC support across India.`}
+        keywords={`${subItem.label}, ${catItem.label}, agricultural projects India, IGO Agritech Farms`}
+        url={`/projects/${category}/${subcategory}`}
+        image={heroImg || undefined}
+        jsonLd={subBreadcrumb}
+      />
       {/* Hero */}
       <section className="relative pt-40 pb-40 overflow-hidden bg-black">
         <motion.div
@@ -470,7 +540,7 @@ const SubcategoryView: React.FC<{ category: string; subcategory: string }> = ({ 
                 transition={{ duration: 0.75, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Link to={feat.href} className="group relative block aspect-[4/3] rounded-[2rem] overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
-                  <img src={img} alt={feat.label} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.2s]" />
+                  <LazyCardImage src={img} alt={feat.label} fallbackSrc={CATEGORY_FALLBACK[category]} priority={i === 0} />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent group-hover:from-black/65 transition-all duration-500" />
                   {SUBSIDY_ELIGIBLE.has(feat.label) && (
                     <div className="absolute top-5 left-5">
@@ -544,8 +614,28 @@ const DetailView: React.FC<{ category: string; subcategory: string; feature: str
     { title: "AMC Support",       desc: "Annual maintenance contracts ensuring long-term performance, yield consistency and uptime." },
   ];
 
+  const featBreadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.igoagritechfarms.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.igoagritechfarms.com/projects" },
+      { "@type": "ListItem", "position": 3, "name": catItem.label, "item": `https://www.igoagritechfarms.com/projects/${category}` },
+      { "@type": "ListItem", "position": 4, "name": subItem.label, "item": `https://www.igoagritechfarms.com/projects/${category}/${subcategory}` },
+      { "@type": "ListItem", "position": 5, "name": featItem.label, "item": `https://www.igoagritechfarms.com/projects/${category}/${subcategory}/${feature}` }
+    ]
+  };
+
   return (
     <div className="bg-white min-h-screen selection:bg-[#E8F5E9] selection:text-[#1A4231] pt-28">
+      <SEO
+        title={featItem.label}
+        description={`${featItem.label} projects by IGO Agritech Farms. ${contextDesc.slice(0, 120)} Get a free site assessment and project report.`}
+        keywords={`${featItem.label}, ${subItem.label}, ${catItem.label}, IGO Agritech Farms${isSubsidy ? ", government subsidy" : ""}`}
+        url={`/projects/${category}/${subcategory}/${feature}`}
+        image={heroImg || undefined}
+        jsonLd={featBreadcrumb}
+      />
 
       {/* ── Hero split section ── */}
       <section className="pb-0 container mx-auto px-6">
@@ -630,6 +720,12 @@ const DetailView: React.FC<{ category: string; subcategory: string; feature: str
               <img
                 src={heroImg}
                 alt={featItem.label}
+                loading="eager"
+                onError={e => {
+                  const el = e.currentTarget as HTMLImageElement;
+                  const fb = CATEGORY_FALLBACK[category] ?? "/assets/projects/main page/agri farming project .jpg";
+                  if (el.src !== fb) el.src = fb;
+                }}
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent pointer-events-none" />
@@ -759,7 +855,7 @@ const DetailView: React.FC<{ category: string; subcategory: string; feature: str
                   transition={{ duration: 0.7, delay: i * 0.1 }}
                 >
                   <Link to={rel.href} className="group relative block aspect-[4/3] rounded-[2rem] overflow-hidden shadow-md hover:shadow-xl transition-all duration-500">
-                    <img src={img} alt={rel.label} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-[1.2s]" />
+                    <LazyCardImage src={img} alt={rel.label} fallbackSrc={CATEGORY_FALLBACK[category]} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
                     {SUBSIDY_ELIGIBLE.has(rel.label) && (
                       <div className="absolute top-4 left-4">

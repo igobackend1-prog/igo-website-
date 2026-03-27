@@ -1,5 +1,6 @@
 import { motion, Variants } from "framer-motion";
 import { Link } from "react-router-dom";
+import SEO from "@/components/SEO";
 import {
   ArrowRight, Lightbulb, Users, Handshake, Leaf, TrendingUp,
   CheckCircle, Star, Globe, BarChart3, Briefcase, Rocket,
@@ -95,6 +96,12 @@ const STORIES = [
 
 const AgriStartupPlatform = () => (
   <div className="bg-white min-h-screen selection:bg-[#E8F5E9] selection:text-[#1A4231]">
+    <SEO
+      title="Agri Startup Platform"
+      description="Launch your agri-business with IGO Agritech Farms. Startup incubation, funding support, market access, and end-to-end mentorship for agriculture entrepreneurs across India."
+      keywords="agri startup platform, agriculture startup India, agri incubation, IGO Agritech Farms, farming business"
+      url="/agri-startup-platform"
+    />
 
     {/* ── 1. HERO ── */}
     <section className="relative pt-36 pb-0 overflow-hidden bg-[#0C1A14]">

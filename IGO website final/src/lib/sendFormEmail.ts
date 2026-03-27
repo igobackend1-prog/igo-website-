@@ -6,7 +6,7 @@
  *
  * FIRST-TIME SETUP (one time only):
  *   1. Submit any form on the website once.
- *   2. Check igobackend1@gmail.com for a verification email from Formsubmit.
+ *   2. Check bankingbackend.indiagreen@gmail.com for a verification email from Formsubmit.
  *   3. Click "Activate Form" in that email.
  *   4. Done — all future submissions arrive automatically.
  *
@@ -14,7 +14,7 @@
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
-const RECIPIENT_EMAIL = "igobackend1@gmail.com";
+const RECIPIENT_EMAIL = "bankingbackend.indiagreen@gmail.com";
 const FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${RECIPIENT_EMAIL}`;
 
 export type FormType =
@@ -39,7 +39,7 @@ export interface EmailPayload {
 }
 
 /**
- * Sends a formatted email to igobackend1@gmail.com via Formsubmit.co.
+ * Sends a formatted email to bankingbackend.indiagreen@gmail.com via Formsubmit.co.
  * Returns { success: boolean, error?: string }
  */
 export async function sendFormEmail(payload: EmailPayload): Promise<{ success: boolean; error?: string }> {

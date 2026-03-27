@@ -132,15 +132,15 @@ const MegaMenu = ({ link }: { link: any }) => {
                           <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover/sub:opacity-100 ml-auto transition-all -translate-x-2 group-hover/sub:translate-x-0" />
                         </Link>
                         
-                        <div className="flex flex-col gap-2 pl-11">
+                        <div className="flex flex-col gap-1.5 pl-11">
                           {subSector.children.map((project: any) => (
                             <Link
                               key={project.label}
                               to={project.href}
-                              className="text-[13px] font-medium text-black/60 hover:text-primary transition-all flex items-center justify-between group/project py-1"
+                              className="text-[13px] font-medium text-black/60 hover:text-primary transition-all flex items-center gap-2 group/project py-0.5"
                             >
-                              <span className="group-hover/project:translate-x-1 transition-transform leading-tight">{project.label}</span>
-                              <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover/project:opacity-40 transition-all -translate-x-2 group-hover/project:translate-x-0 text-primary shrink-0" />
+                              <span className="w-1.5 h-1.5 rounded-full bg-black/20 group-hover/project:bg-primary shrink-0 transition-colors" />
+                              <span className="group-hover/project:translate-x-0.5 transition-transform leading-tight">{project.label}</span>
                             </Link>
                           ))}
                         </div>

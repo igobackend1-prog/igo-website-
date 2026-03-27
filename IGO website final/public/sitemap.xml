@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- ── Core Pages ── -->
   <url><loc>https://www.igoagritechfarms.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://www.igoagritechfarms.com/about</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://www.igoagritechfarms.com/services</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.igoagritechfarms.com/projects</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://www.igoagritechfarms.com/products</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/contact</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/careers</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/courses</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/faq</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/igo-groups</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/agri-startup-platform</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/startup-enquiry</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/offers</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+
+  <!-- ── Blog ── -->
   <url><loc>https://www.igoagritechfarms.com/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.igoagritechfarms.com/blog/blog1</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.igoagritechfarms.com/blog/blog2</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -14,10 +23,252 @@
   <url><loc>https://www.igoagritechfarms.com/blog/blog7</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.igoagritechfarms.com/blog/blog8</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://www.igoagritechfarms.com/blog/blog9</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.igoagritechfarms.com/courses</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.igoagritechfarms.com/careers</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.igoagritechfarms.com/contact</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.igoagritechfarms.com/faq</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://www.igoagritechfarms.com/agri-startup-platform</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://www.igoagritechfarms.com/igo-groups</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ── Services — Main ── -->
+  <url><loc>https://www.igoagritechfarms.com/services</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farm-planning</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farming-project-setup</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farm-infrastructure</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/maintenance-support</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- ── Services — Farm Planning ── -->
+  <url><loc>https://www.igoagritechfarms.com/services/farm-planning/farm-business-planning</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farm-planning/agri-investment-consulting</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farm-planning/crop-selection-consulting</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farm-planning/farm-layout-design</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farm-planning/aquaculture-consulting</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farm-planning/land-surveying</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- ── Services — Farming Project Setup ── -->
+  <url><loc>https://www.igoagritechfarms.com/services/farming-project-setup/polyhouse-installation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farming-project-setup/hydroponic-setup</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farming-project-setup/vertical-farming-setup</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farming-project-setup/fish-farming-setup</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farming-project-setup/biofloc-installation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farming-project-setup/aquaculture-pond-construction</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farming-project-setup/aquaponics-setup</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farming-project-setup/goat-farm-setup</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farming-project-setup/dairy-farm-setup</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farming-project-setup/sheep-farm-setup</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farming-project-setup/poultry-farm-setup</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farming-project-setup/gis-mapping</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- ── Services — Farm Infrastructure ── -->
+  <url><loc>https://www.igoagritechfarms.com/services/farm-infrastructure/cold-storage-construction</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farm-infrastructure/packhouse-construction</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farm-infrastructure/farm-building-design</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farm-infrastructure/drip-irrigation-installation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farm-infrastructure/sprinkler-irrigation-systems</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farm-infrastructure/water-pump-systems</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/farm-infrastructure/land-leveling</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- ── Services — Maintenance & Support ── -->
+  <url><loc>https://www.igoagritechfarms.com/services/maintenance-support/livestock-shed-construction</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/maintenance-support/polyhouse-amc</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/maintenance-support/hydroponic-system-amc</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/services/maintenance-support/farm-equipment-maintenance</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- ── Projects — Main ── -->
+  <url><loc>https://www.igoagritechfarms.com/projects</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/aquaculture</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/livestock</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/engineering</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- ── Projects — Agri Subcategories ── -->
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/protected</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/hydroponic</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/vertical</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/open-field</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/vegetable</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/medicinal</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/floriculture</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/mushroom</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/urban</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/nursery</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- ── Projects — Protected Farming ── -->
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/protected/naturally-ventilated</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/protected/climate-controlled</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/protected/polycarbonate</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/protected/shade-net</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/protected/mist-chamber</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ── Projects — Hydroponic ── -->
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/hydroponic/nft</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/hydroponic/dwc</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/hydroponic/towers</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/hydroponic/commercial</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/hydroponic/indoor</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ── Projects — Vertical Farming ── -->
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/vertical/indoor</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/vertical/commercial</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/vertical/smart-grow</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ── Projects — Open Field ── -->
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/open-field/dragon-fruit</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/open-field/guava</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/open-field/mango</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/open-field/papaya</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/open-field/fig</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/open-field/blueberry</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ── Projects — Vegetable ── -->
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/vegetable/cucumber</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/vegetable/capsicum</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/vegetable/tomato</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/vegetable/chilli</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/vegetable/muskmelon</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/vegetable/watermelon</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ── Projects — Medicinal ── -->
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/medicinal/aloe-vera</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/medicinal/moringa</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/medicinal/ginger</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/medicinal/turmeric</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/medicinal/tapioca</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ── Projects — Floriculture ── -->
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/floriculture/rose</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/floriculture/jasmine</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/floriculture/marigold</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/floriculture/exotic</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ── Projects — Mushroom ── -->
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/mushroom/oyster</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/mushroom/button</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/mushroom/commercial</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ── Projects — Urban Farming ── -->
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/urban/rooftop</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/urban/terrace</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/urban/kitchen</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/urban/microgreens</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ── Projects — Nursery ── -->
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/nursery/commercial</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/nursery/seedling</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/agri/nursery/tissue-culture</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ── Projects — Aquaculture Subcategories ── -->
+  <url><loc>https://www.igoagritechfarms.com/projects/aquaculture/fish</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/aquaculture/biofloc</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/aquaculture/shrimp</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/aquaculture/crab</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/aquaculture/integrated</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- ── Projects — Aquaculture Detail ── -->
+  <url><loc>https://www.igoagritechfarms.com/projects/aquaculture/fish/traditional</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/aquaculture/fish/intensive</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/aquaculture/fish/cage</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/aquaculture/biofloc/fish</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/aquaculture/biofloc/shrimp</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/aquaculture/shrimp/vannamei</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/aquaculture/shrimp/prawn</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/aquaculture/crab/mud-crab</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/aquaculture/integrated/aquaponics</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/aquaculture/integrated/fish-crop</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ── Projects — Livestock Subcategories ── -->
+  <url><loc>https://www.igoagritechfarms.com/projects/livestock/goat</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/livestock/sheep</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/livestock/dairy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/livestock/poultry</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/livestock/integrated</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- ── Projects — Livestock Detail ── -->
+  <url><loc>https://www.igoagritechfarms.com/projects/livestock/goat/commercial</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/livestock/goat/integrated</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/livestock/sheep/commercial</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/livestock/dairy/setup</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/livestock/dairy/automated</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/livestock/poultry/broiler</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/livestock/poultry/layer</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/livestock/integrated/goat-fish</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/livestock/integrated/dairy-crop</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ── Projects — Engineering Subcategories ── -->
+  <url><loc>https://www.igoagritechfarms.com/projects/engineering/infrastructure</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/engineering/water</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/engineering/solar</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/engineering/development</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- ── Projects — Engineering Detail ── -->
+  <url><loc>https://www.igoagritechfarms.com/projects/engineering/infrastructure/cold-storage</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/engineering/infrastructure/pack-house</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/engineering/infrastructure/buildings</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/engineering/infrastructure/roads</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/engineering/water/rainwater</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/engineering/water/pond-liner</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/engineering/water/irrigation</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/engineering/water/borewell</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/engineering/solar/crop-dryer</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/engineering/solar/heater</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/engineering/solar/fencing</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/engineering/solar/lighting</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/engineering/development/surveying</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/engineering/development/topographic</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/engineering/development/contour</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/projects/engineering/development/leveling</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ── Products — Main ── -->
+  <url><loc>https://www.igoagritechfarms.com/products</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/agri-essentials</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/crop-solutions</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/animal-solutions</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/farm-equipment</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+
+  <!-- ── Products — Agri Essentials ── -->
+  <url><loc>https://www.igoagritechfarms.com/products/agri-essentials/vegetable-seeds</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/agri-essentials/fruit-plants</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/agri-essentials/flower-seeds</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/agri-essentials/medicinal-plants</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ── Products — Crop Solutions ── -->
+  <url><loc>https://www.igoagritechfarms.com/products/crop-solutions/npk-fertilizers</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/crop-solutions/organic-fertilizers</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/crop-solutions/liquid-fertilizers</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/crop-solutions/micronutrients</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/crop-solutions/azospirillum</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/crop-solutions/phosphate-solubilizing-bacteria</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/crop-solutions/mycorrhiza</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/crop-solutions/humic-acid</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/crop-solutions/fulvic-acid</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/crop-solutions/amino-acid-nutrients</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/crop-solutions/insecticides</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/crop-solutions/fungicides</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/crop-solutions/herbicides</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/crop-solutions/bio-pesticides</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ── Products — Animal Solutions ── -->
+  <url><loc>https://www.igoagritechfarms.com/products/animal-solutions/fish-feed</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/animal-solutions/aerators</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/animal-solutions/biofloc-tanks</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/animal-solutions/pond-liners</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/animal-solutions/water-testing-kits</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/animal-solutions/fish-medicines</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/animal-solutions/goat-feed</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/animal-solutions/cattle-feed</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/animal-solutions/mineral-mixtures</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/animal-solutions/livestock-medicines</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/animal-solutions/livestock-equipment</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- ── Products — Farm Equipment ── -->
+  <url><loc>https://www.igoagritechfarms.com/products/farm-equipment/polyhouse-sheets</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/farm-equipment/shade-nets</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/farm-equipment/insect-nets</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/farm-equipment/gi-pipes</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/farm-equipment/nft-channels</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/farm-equipment/net-pots</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/farm-equipment/hydroponic-nutrients</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/farm-equipment/grow-lights</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/farm-equipment/water-pumps</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/farm-equipment/drip-irrigation-systems</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/farm-equipment/sprinklers</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/farm-equipment/irrigation-pipes</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/farm-equipment/solar-dryers</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/farm-equipment/solar-pumps</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.igoagritechfarms.com/products/farm-equipment/solar-fencing-systems</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
 </urlset>

@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState, useEffect } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -10,8 +10,6 @@ import { AuthProvider } from "@/hooks/useAuth";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Chatbot from "@/components/Chatbot";
-import LoadingScreen from "@/components/LoadingScreen";
-
 // Lazy-loaded pages for better code splitting
 const Index = lazy(() => import("./pages/Index"));
 const About = lazy(() => import("./pages/About"));
@@ -69,12 +67,6 @@ class ErrorBoundary extends React.Component<
     return this.props.children;
   }
 }
-
-// Module-level flag — lives in JS memory for the lifetime of the loaded bundle.
-// • Browser F5 / hard reload  → JS re-executes → resets to false → loading shows ✅
-// • SPA link navigation       → bundle stays in memory → stays true → loading skipped ✅
-// • React StrictMode (dev)    → second mount sees true → loading skipped ✅
-let hasLoadedOnce = false;
 
 // ─── ScrollToTop ──────────────────────────────────────────────────────────────
 // Resets scroll position to top on every route change.
@@ -144,63 +136,28 @@ const AppRoutes = () => {
 };
 
 // ─── App ──────────────────────────────────────────────────────────────────────
-const App = () => {
-  // Initialiser runs once per mount.
-  // If hasLoadedOnce is already true (SPA navigation caused remount, or StrictMode
-  // double-render) we skip the loading screen entirely.
-  const [isInitialLoad, setIsInitialLoad] = useState<boolean>(() => {
-    if (hasLoadedOnce) return false;
-    hasLoadedOnce = true;
-    return true;
-  });
-
-  // Failsafe: force-dismiss loading screen after 4s in case onComplete never fires
-  useEffect(() => {
-    if (!isInitialLoad) return;
-    const fallbackTimer = setTimeout(() => {
-      setIsInitialLoad(false);
-    }, 2000);
-    return () => clearTimeout(fallbackTimer);
-  }, []);
-
-  return (
-    <HelmetProvider>
+const App = () => (
+  <HelmetProvider>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <AuthProvider>
           <Toaster />
           <Sonner />
-
-          <AnimatePresence mode="wait">
-            {isInitialLoad && (
-              <LoadingScreen key="loading-screen" onComplete={() => setIsInitialLoad(false)} />
-            )}
-          </AnimatePresence>
-
-          {/* Reveal content after loading screen completes */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isInitialLoad ? 0 : 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className={isInitialLoad ? "h-screen overflow-hidden pointer-events-none" : ""}
-          >
-            <BrowserRouter>
-              <ScrollToTop />
-              <Navbar />
-              <ErrorBoundary>
-                <main className="min-h-screen relative z-10">
-                  <AppRoutes />
-                </main>
-              </ErrorBoundary>
-              <Footer />
-              <Chatbot />
-            </BrowserRouter>
-          </motion.div>
+          <BrowserRouter>
+            <ScrollToTop />
+            <Navbar />
+            <ErrorBoundary>
+              <main className="min-h-screen relative z-10">
+                <AppRoutes />
+              </main>
+            </ErrorBoundary>
+            <Footer />
+            <Chatbot />
+          </BrowserRouter>
         </AuthProvider>
       </TooltipProvider>
     </QueryClientProvider>
-    </HelmetProvider>
-  );
-};
+  </HelmetProvider>
+);
 
 export default App;

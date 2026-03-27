@@ -1,108 +1,183 @@
 import { useState } from "react";
-import { ArrowRight, Mail, TrendingUp, Zap, Heart, CheckCircle, Users, MapPin, ChevronDown, Send } from "lucide-react";
+import { ArrowRight, Mail, TrendingUp, Zap, Heart, CheckCircle, Users, MapPin, Send } from "lucide-react";
 import SEO from "@/components/SEO";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { sendFormEmail } from "@/lib/sendFormEmail";
 import { toast } from "sonner";
 
+const MULTILANG = ["Tamil", "Telugu", "Hindi", "English"];
+
 const departments = [
+  // ── FEATURED — Farm Manager first ──────────────────────────────────────────
   {
-    name: "Digital Marketing Team",
-    emoji: "📣",
-    color: "bg-violet-50 border-violet-200 text-violet-700",
-    iconBg: "bg-violet-100",
-    roles: ["Digital Marketing Manager", "SEO Analyst", "Content Creator", "Video Editor", "Social Media Executive", "Accounts Executive"],
-    qualification: "Any Degree",
+    name: "Farm Manager",
+    featured: true,
+    emoji: "🌿",
+    color: "bg-green-50 border-green-200 text-green-700",
+    iconBg: "bg-green-100",
+    image: "/assets/career images/farm.webp",
+    vacancies: 20,
+    roles: ["Farm Manager", "Assistant Farm Manager", "Crop Production Specialist", "Farm Operations Executive", "Agri Supervisor"],
+    qualification: "B.Sc. Agriculture / B.Tech Agriculture Engineering",
+    languages: MULTILANG,
+    type: "Full Time",
+  },
+  // ── New departments ─────────────────────────────────────────────────────────
+  {
+    name: "Mushroom Farming Team",
+    featured: false,
+    emoji: "🍄",
+    color: "bg-purple-50 border-purple-200 text-purple-700",
+    iconBg: "bg-purple-100",
+    image: null,
+    vacancies: 5,
+    roles: ["Mushroom Farm Technician", "Substrate Preparation Staff", "Harvest & Packaging Executive", "Spawn Production Technician", "Quality Control – Mushroom"],
+    qualification: "Any Degree / Diploma in Mushroom Cultivation",
+    languages: MULTILANG,
     type: "Full Time",
   },
   {
+    name: "Hydroponics Team",
+    featured: false,
+    emoji: "💧",
+    color: "bg-cyan-50 border-cyan-200 text-cyan-700",
+    iconBg: "bg-cyan-100",
+    image: null,
+    vacancies: 3,
+    roles: ["Hydroponics Technician", "NFT System Operator", "Nutrient Management Specialist"],
+    qualification: "B.Sc. Agriculture / Diploma in Horticulture",
+    languages: MULTILANG,
+    type: "Full Time",
+  },
+  // ── Original departments (updated) ─────────────────────────────────────────
+  {
     name: "Business Development Team",
+    featured: false,
     emoji: "📈",
     color: "bg-blue-50 border-blue-200 text-blue-700",
     iconBg: "bg-blue-100",
-    roles: ["Business Development Executive", "Business Development Manager", "Sales Executive"],
+    image: "/assets/career images/businessdev.webp",
+    vacancies: 5,
+    roles: ["Business Development Executive", "Business Development Manager", "Sales Executive", "Area Sales Manager", "Client Relationship Executive"],
     qualification: "Any Degree",
+    languages: MULTILANG,
+    type: "Full Time",
+  },
+  {
+    name: "Digital Marketing Team",
+    featured: false,
+    emoji: "📣",
+    color: "bg-violet-50 border-violet-200 text-violet-700",
+    iconBg: "bg-violet-100",
+    image: "/assets/career images/digital.webp",
+    vacancies: 6,
+    roles: ["Digital Marketing Manager", "SEO Analyst", "Content Creator", "Video Editor", "Social Media Executive", "Accounts Executive"],
+    qualification: "Any Degree",
+    languages: MULTILANG,
     type: "Full Time",
   },
   {
     name: "Agriculture Engineering Team",
+    featured: false,
     emoji: "🌱",
     color: "bg-emerald-50 border-emerald-200 text-emerald-700",
     iconBg: "bg-emerald-100",
+    image: "/assets/career images/agrieng.jpg",
+    vacancies: 5,
     roles: ["Agri Project Engineer", "Agronomist", "Horticulturist", "Irrigation Specialist", "Soil Scientist"],
     qualification: "B.Sc. / B.Tech – Agriculture, Agronomy, Horticulture, Soil Science, Forestry",
+    languages: MULTILANG,
     type: "Full Time",
   },
   {
     name: "Civil Engineering Team",
+    featured: false,
     emoji: "🏗️",
     color: "bg-orange-50 border-orange-200 text-orange-700",
     iconBg: "bg-orange-100",
+    image: "/assets/career images/civil.webp",
+    vacancies: 4,
     roles: ["Civil Engineer", "Site Supervisor", "Structural Engineer", "Project Coordinator"],
     qualification: "B.E. Civil Engineering",
+    languages: MULTILANG,
     type: "Full Time",
   },
   {
     name: "Farmers Factory",
+    featured: false,
     emoji: "🏭",
     color: "bg-yellow-50 border-yellow-200 text-yellow-700",
     iconBg: "bg-yellow-100",
+    image: "/assets/career images/ffff.webp",
+    vacancies: 4,
     roles: ["Operations Executive", "Production Staff", "Packing Executive", "Unskilled Labour"],
-    qualification: "10th / 12th / Any Degree",
+    qualification: "Any Degree",
+    languages: MULTILANG,
     type: "Full Time",
   },
   {
     name: "Logistics Manager",
+    featured: false,
     emoji: "🚚",
     color: "bg-sky-50 border-sky-200 text-sky-700",
     iconBg: "bg-sky-100",
+    image: "/assets/career images/driver.webp",
+    vacancies: 3,
     roles: ["Logistics Manager", "Supply Chain Executive", "Driver"],
     qualification: "Any Degree",
+    languages: MULTILANG,
     type: "Full Time",
   },
   {
     name: "Quality Control",
+    featured: false,
     emoji: "✅",
     color: "bg-teal-50 border-teal-200 text-teal-700",
     iconBg: "bg-teal-100",
+    image: "/assets/career images/purchase.jpg",
+    vacancies: 3,
     roles: ["QC Manager", "Quality Inspector", "Lab Technician"],
     qualification: "Any Degree / Science Background",
+    languages: MULTILANG,
     type: "Full Time",
   },
   {
     name: "Field Executive",
+    featured: false,
     emoji: "🌾",
     color: "bg-lime-50 border-lime-200 text-lime-700",
     iconBg: "bg-lime-100",
+    image: "/assets/career images/delivery.jpg",
+    vacancies: 3,
     roles: ["Field Executive", "Field Coordinator", "Ground-Level Supervisor"],
-    qualification: "10th / 12th / Any Degree",
+    qualification: "Any Degree",
+    languages: MULTILANG,
     type: "Full Time",
   },
   {
     name: "Warehouse Incharge",
+    featured: false,
     emoji: "📦",
     color: "bg-amber-50 border-amber-200 text-amber-700",
     iconBg: "bg-amber-100",
+    image: "/assets/career images/ware.webp",
+    vacancies: 3,
     roles: ["Warehouse Incharge", "Inventory Executive", "Store Keeper"],
-    qualification: "10th / 12th / Any Degree",
-    type: "Full Time",
-  },
-  {
-    name: "Farm Manager",
-    emoji: "🌿",
-    color: "bg-green-50 border-green-200 text-green-700",
-    iconBg: "bg-green-100",
-    roles: ["Farm Manager", "Assistant Farm Manager", "Crop Production Specialist"],
-    qualification: "B.Sc. Agriculture / B.Tech Agriculture Engineering",
+    qualification: "Any Degree",
+    languages: MULTILANG,
     type: "Full Time",
   },
   {
     name: "Livestock Manager",
+    featured: false,
     emoji: "🐄",
     color: "bg-rose-50 border-rose-200 text-rose-700",
     iconBg: "bg-rose-100",
+    image: "/assets/career images/live.webp",
+    vacancies: 3,
     roles: ["Livestock Manager", "Veterinary Assistant", "Animal Husbandry Specialist"],
     qualification: "Animal Husbandry / Bachelor of Veterinary Science",
+    languages: MULTILANG,
     type: "Full Time",
   },
 ];
@@ -132,8 +207,6 @@ const benefits = [
 ];
 
 const Careers = () => {
-  const [open, setOpen] = useState<number | null>(null);
-
   // ── Career Application Form state ──────────────────────────────────────────
   const [applyForm, setApplyForm] = useState({ name: "", email: "", phone: "", department: "", position: "", message: "" });
   const [applyLoading, setApplyLoading] = useState(false);
@@ -202,7 +275,7 @@ const Careers = () => {
               className="max-w-xl"
             >
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-[#6FD898] text-[10px] font-black uppercase tracking-[0.3em] mb-6 border border-white/20">
-                We're Hiring · 11 Departments Open
+                We're Hiring · {departments.length} Departments Open
               </div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-white mb-5">
                 Build Your Career in <br />
@@ -219,7 +292,7 @@ const Careers = () => {
                   Browse Openings <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
                 <a
-                  href="mailto:igobackend1@gmail.com"
+                  href="mailto:bankingbackend.indiagreen@gmail.com"
                   className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-white/10 text-white font-bold text-sm hover:bg-white/20 transition-all border border-white/20"
                 >
                   <Mail className="w-4 h-4" /> Send Your CV
@@ -235,8 +308,8 @@ const Careers = () => {
               className="grid grid-cols-2 gap-4 w-full lg:w-[360px] shrink-0"
             >
               {[
-                { value: "11", label: "Open Departments", icon: <Users className="w-5 h-5" /> },
-                { value: "2000+", label: "Team Members", icon: <TrendingUp className="w-5 h-5" /> },
+                { value: `${departments.length}`, label: "Open Departments", icon: <Users className="w-5 h-5" /> },
+                { value: "130+", label: "Vacancies Open", icon: <TrendingUp className="w-5 h-5" /> },
                 { value: "Pan India", label: "Locations", icon: <MapPin className="w-5 h-5" /> },
                 { value: "75+", label: "Awards Won", icon: <CheckCircle className="w-5 h-5" /> },
               ].map((s) => (
@@ -301,7 +374,7 @@ const Careers = () => {
               <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Current Openings</h2>
             </div>
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold border border-primary/20">
-              {departments.length} Departments · All Full Time
+              {departments.length} Departments · 130+ Vacancies · All Full Time
             </span>
           </div>
 
@@ -313,76 +386,87 @@ const Careers = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.04 }}
-                className="bg-white rounded-2xl border border-border overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                className={`bg-white rounded-2xl border overflow-hidden shadow-sm hover:shadow-md transition-shadow ${dept.featured ? "border-[#1A4231]/40 ring-1 ring-[#1A4231]/20" : "border-border"}`}
               >
-                {/* Card Header */}
-                <button
-                  className="w-full flex items-center justify-between px-6 py-5 text-left group"
-                  onClick={() => setOpen(open === i ? null : i)}
-                >
-                  <div className="flex items-center gap-4">
-                    <div className={`w-11 h-11 rounded-xl flex items-center justify-center text-xl ${dept.iconBg} border ${dept.color.split(" ").slice(1,2).join(" ")}`}>
+                {/* Photo hero — full bleed at top */}
+                <div className="relative h-56 overflow-hidden bg-[#F0F4F0]">
+                  {dept.image ? (
+                    <img
+                      src={dept.image}
+                      alt={dept.name}
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover object-top"
+                    />
+                  ) : (
+                    <div className={`absolute inset-0 ${dept.iconBg} flex items-center justify-center text-5xl opacity-30`}>
                       {dept.emoji}
                     </div>
-                    <div>
-                      <div className="font-bold text-[15px] leading-tight">{dept.name}</div>
-                      <div className="text-xs text-muted-foreground mt-0.5">
-                        {dept.roles.length} roles available
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3 shrink-0 ml-3">
-                    <span className={`hidden sm:inline-flex px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-[0.15em] border ${dept.color}`}>
-                      {dept.qualification.split("/")[0].split("–")[0].trim()}
-                    </span>
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center border transition-all ${open === i ? "bg-primary border-primary text-white" : "border-border text-muted-foreground group-hover:border-primary/40"}`}>
-                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${open === i ? "rotate-180" : ""}`} />
-                    </div>
-                  </div>
-                </button>
-
-                {/* Expanded Content */}
-                <AnimatePresence initial={false}>
-                  {open === i && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: "easeInOut" }}
-                      className="overflow-hidden"
-                    >
-                      <div className="px-6 pb-5 border-t border-border/60">
-                        <div className="pt-4 mb-4">
-                          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground mb-3">Roles</p>
-                          <div className="flex flex-wrap gap-2">
-                            {dept.roles.map((role) => (
-                              <span
-                                key={role}
-                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F9F9F7] border border-border text-sm font-medium"
-                              >
-                                <CheckCircle className="w-3 h-3 text-primary" />
-                                {role}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-3 border-t border-border/60">
-                          <div>
-                            <p className="text-[10px] font-black uppercase tracking-[0.25em] text-muted-foreground mb-1">Qualification</p>
-                            <p className="text-xs font-semibold text-foreground">{dept.qualification}</p>
-                          </div>
-                          <button
-                            type="button"
-                            onClick={() => scrollAndPreFill(dept.name)}
-                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-white text-xs font-black uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors whitespace-nowrap shrink-0"
-                          >
-                            Apply Now <ArrowRight className="w-3.5 h-3.5" />
-                          </button>
-                        </div>
-                      </div>
-                    </motion.div>
                   )}
-                </AnimatePresence>
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+
+                  {/* Featured banner on top-left */}
+                  {dept.featured && (
+                    <div className="absolute top-0 left-0 right-0 bg-[#1A4231] text-white text-[9px] font-black uppercase tracking-widest px-5 py-2 flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#6FD898] animate-pulse shrink-0" />
+                      Featured Opening · High Demand
+                    </div>
+                  )}
+
+                  {/* Name + vacancies overlaid at bottom */}
+                  <div className="absolute bottom-0 left-0 right-0 px-5 pb-4">
+                    <div className="flex items-center gap-3">
+                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center text-lg ${dept.iconBg} shrink-0`}>
+                        {dept.emoji}
+                      </div>
+                      <div>
+                        <div className="font-bold text-white text-[15px] leading-tight">{dept.name}</div>
+                        <div className="text-xs text-white/70 mt-0.5">{dept.vacancies} vacancies available</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Roles + Qualification + Languages */}
+                <div className="px-6 pb-5">
+                  <div className="pt-4 mb-4">
+                    <p className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground mb-3">Roles</p>
+                    <div className="flex flex-wrap gap-2">
+                      {dept.roles.map((role) => (
+                        <span
+                          key={role}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#F9F9F7] border border-border text-sm font-medium"
+                        >
+                          <CheckCircle className="w-3 h-3 text-primary" />
+                          {role}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-4 pt-3 border-t border-border/60">
+                    <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                      <div>
+                        <p className="text-[10px] font-black uppercase tracking-[0.25em] text-muted-foreground mb-1">Qualification</p>
+                        <p className="text-xs font-semibold text-foreground">{dept.qualification}</p>
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-black uppercase tracking-[0.25em] text-muted-foreground mb-1.5">Languages Required</p>
+                        <div className="flex flex-wrap gap-1.5">
+                          {dept.languages.map((lang: string) => (
+                            <span key={lang} className="px-2 py-0.5 rounded-full bg-[#E8F5E9] text-[#1A4231] text-[10px] font-bold">{lang}</span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => scrollAndPreFill(dept.name)}
+                      className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-primary text-white text-xs font-black uppercase tracking-[0.2em] hover:bg-primary/90 transition-colors whitespace-nowrap self-start"
+                    >
+                      Apply Now <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>

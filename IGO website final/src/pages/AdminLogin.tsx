@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { motion } from "framer-motion";
 import { Lock, Mail, Eye, EyeOff } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -28,6 +29,7 @@ const AdminLogin = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center gradient-hero px-4">
+      <SEO title="Admin Login" description="IGO Agritech Farms admin login." noIndex />
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}

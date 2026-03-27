@@ -7,7 +7,17 @@
       "Bash(node -e \"const fs=require\\(''fs''\\); const buf=fs.readFileSync\\(''public/assets/about page image .png''\\); const w=buf.readUInt32BE\\(16\\); const h=buf.readUInt32BE\\(20\\); console.log\\(''Width:'',w,''Height:'',h,''Ratio:'',w+''/''+h\\);\")",
       "WebFetch(domain:69b251b543c8a1b92e2c7191--thriving-lolly-8518d6.netlify.app)",
       "WebFetch(domain:thriving-lolly-8518d6.netlify.app)",
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "Bash(mv \"WhatsApp Image 2026-03-26 at 11.26.05 AM.jpeg\" \"igo-group.jpeg\")",
+      "Bash(mv \"WhatsApp Image 2026-03-26 at 11.26.05 AM \\(1\\).jpeg\" \"palm-cafe.jpeg\")",
+      "Bash(mv \"WhatsApp Image 2026-03-26 at 11.30.23 AM.jpeg\" \"igo-exports.jpeg\")",
+      "Bash(mv \"WhatsApp Image 2026-03-26 at 11.33.29 AM.jpeg\" \"igo-foundation.jpeg\")",
+      "Bash(mkdir -p \"d:/New folder/IGO WEBSITE/IGO website final/public/assets/career images\")",
+      "Bash(curl -s -o \"farm.webp\" \"https://www.igoagritechfarms.com/images/career/farm.webp\")",
+      "Bash(curl -s -o \"digital.webp\" \"https://www.igoagritechfarms.com/images/career/digital.webp\")",
+      "Bash(curl -s -o \"businessdev.webp\" \"https://www.igoagritechfarms.com/images/career/businessdev.webp\")",
+      "Bash(curl -s -o \"agrieng.jpg\" \"https://www.igoagritechfarms.com/images/career/agrieng.jpg\")",
+      "Bash(xargs sed:*)"
     ]
   }
 }

@@ -3,6 +3,7 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { motion, Variants } from "framer-motion";
 import { ArrowLeft, ArrowRight, CheckCircle2, Shield, TrendingUp } from "lucide-react";
 import { navLinks } from "@/data/siteData";
+import SEO from "@/components/SEO";
 
 const fader: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -27,8 +28,26 @@ const CategoryView: React.FC<{ categorySlug: string }> = ({ categorySlug }) => {
   const cat = getServiceCategory(categorySlug);
   if (!cat) return <Navigate to="/services" />;
 
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.igoagritechfarms.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.igoagritechfarms.com/services" },
+      { "@type": "ListItem", "position": 3, "name": cat.label, "item": `https://www.igoagritechfarms.com/services/${categorySlug}` }
+    ]
+  };
+
   return (
     <div className="bg-[#FDFDFD] min-h-screen selection:bg-[#E8F5E9] selection:text-[#1A4231]">
+      <SEO
+        title={`${cat.label} Services`}
+        description={`Professional ${cat.label} services by IGO Agritech Farms. Expert agricultural engineering and consulting with ${cat.children?.length || 0} specialised services across India.`}
+        keywords={`${cat.label}, agricultural services, IGO Agritech Farms, farming services India`}
+        url={`/services/${categorySlug}`}
+        image={cat.cardImage || undefined}
+        jsonLd={breadcrumb}
+      />
       {/* Hero */}
       <section className="relative pt-40 pb-32 overflow-hidden bg-black">
         <motion.div
@@ -145,6 +164,32 @@ const DetailView: React.FC<{ categorySlug: string; serviceSlug: string }> = ({ c
 
   const serviceImage = service.image || LOCAL_FALLBACK;
 
+  const serviceBreadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.igoagritechfarms.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.igoagritechfarms.com/services" },
+      { "@type": "ListItem", "position": 3, "name": cat.label, "item": `https://www.igoagritechfarms.com/services/${categorySlug}` },
+      { "@type": "ListItem", "position": 4, "name": service.label, "item": `https://www.igoagritechfarms.com/services/${categorySlug}/${serviceSlug}` }
+    ]
+  };
+
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": service.label,
+    "description": `IGO Agritech Farms delivers professional ${service.label} services with industrial-grade expertise and complete turnkey implementation.`,
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "IGO Agritech Farms",
+      "url": "https://www.igoagritechfarms.com"
+    },
+    "areaServed": "India",
+    "serviceType": cat.label,
+    "image": serviceImage.startsWith("/") ? `https://www.igoagritechfarms.com${serviceImage}` : serviceImage
+  };
+
   const deliverables = [
     { title: "Project Report", desc: "Detailed technical & financial feasibility study." },
     { title: "Design Layout", desc: "Professional architectural and structural blueprints." },
@@ -154,6 +199,14 @@ const DetailView: React.FC<{ categorySlug: string; serviceSlug: string }> = ({ c
 
   return (
     <div className="bg-white min-h-screen selection:bg-[#E8F5E9] selection:text-[#1A4231] pt-32">
+      <SEO
+        title={service.label}
+        description={`IGO Agritech Farms delivers professional ${service.label} with industrial-grade expertise. Turnkey implementation, site survey, training, and AMC support across India.`}
+        keywords={`${service.label}, ${cat.label}, agricultural service India, IGO Agritech Farms`}
+        url={`/services/${categorySlug}/${serviceSlug}`}
+        image={serviceImage.startsWith("/") ? serviceImage : undefined}
+        jsonLd={{ "@context": "https://schema.org", "@graph": [serviceBreadcrumb, serviceSchema] }}
+      />
       <section className="pb-32 container mx-auto px-6">
         <Link
           to={`/services/${categorySlug}`}

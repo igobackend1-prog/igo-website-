@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import SEO from "@/components/SEO";
 import {
   ArrowRight, CheckCircle, Rocket, Sprout, Building2,
   Mail, Phone, User, Lightbulb, Target, Handshake,
@@ -173,6 +174,12 @@ const AgriStartupEnquiry = () => {
   // ── Main page ───────────────────────────────────────────────────────────────
   return (
     <div className="bg-white min-h-screen selection:bg-[#E8F5E9] selection:text-[#1A4231]">
+      <SEO
+        title="Agri Startup Enquiry"
+        description="Register your agri startup with IGO Agritech Farms. Get incubation support, funding guidance, land access, and market connections to grow your agricultural business."
+        keywords="agri startup enquiry, agriculture startup registration India, IGO incubation programme, farming startup support"
+        url="/startup-enquiry"
+      />
 
       {/* ══ HERO ══════════════════════════════════════════════════════════════ */}
       <section className="relative pt-36 pb-28 overflow-hidden bg-[#0C1A14]">

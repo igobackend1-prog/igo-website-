@@ -80,7 +80,7 @@ const Academy = () => {
     });
     if (dbError) console.error("Supabase insert error:", dbError.message);
 
-    // 2. Auto-send email to igobackend1@gmail.com
+    // 2. Auto-send email to bankingbackend.indiagreen@gmail.com
     const { success } = await sendFormEmail({
       formType: "IGO Academy Enrollment",
       name:     formData.name,
@@ -392,11 +392,11 @@ const Academy = () => {
                     </div>
                     +91 73977 89803
                   </a>
-                  <a href="mailto:igobackend1@gmail.com" className="flex items-center gap-3 text-sm font-semibold hover:text-primary transition-colors break-all">
+                  <a href="mailto:bankingbackend.indiagreen@gmail.com" className="flex items-center gap-3 text-sm font-semibold hover:text-primary transition-colors break-all">
                     <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
                       <Mail className="w-3.5 h-3.5" />
                     </div>
-                    igobackend1@gmail.com
+                    bankingbackend.indiagreen@gmail.com
                   </a>
                   <a
                     href="https://wa.me/917397789803?text=Hi%20IGO%2C%20I'm%20interested%20in%20your%20Academy%20programs."

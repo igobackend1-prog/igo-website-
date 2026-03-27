@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Upload, LayoutList, History, LogOut, Globe, BarChart3 } from "lucide-react";
 import { useAdsAuth } from "@/hooks/useAdsAuth";
+import SEO from "@/components/SEO";
 import { getOffers, getActiveOffers, OfferPoster } from "@/data/offersData";
 import UploadTab   from "@/components/ads/UploadTab";
 import UpdateTab   from "@/components/ads/UpdateTab";
@@ -61,6 +62,7 @@ const AdsDashboard = () => {
 
   return (
     <div className="min-h-screen bg-[#060E08] flex flex-col">
+      <SEO title="Ads Dashboard" description="IGO Agritech Farms ads management dashboard." noIndex />
 
       {/* ── Top header ── */}
       <header className="border-b border-white/8 bg-[#0A1510]/80 backdrop-blur-md sticky top-0 z-30">

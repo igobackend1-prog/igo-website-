@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import SEO from "@/components/SEO";
 import { Clock, MessageCircle, Phone, Award, Users, Briefcase, Star } from "lucide-react";
 import { getActiveOffers, OfferPoster } from "@/data/offersData";
 import OffersBanner from "@/components/OffersBanner";
@@ -106,6 +107,12 @@ const OffersPage = () => {
 
   return (
     <div className="bg-white min-h-screen">
+      <SEO
+        title="Latest Offers & Schemes"
+        description="Exclusive offers and agricultural schemes from IGO Agritech Farms. Limited-time discounts on polyhouse setup, hydroponic systems, farm equipment, and consulting services."
+        keywords="IGO Agritech Farms offers, polyhouse discount, hydroponic offer, agricultural scheme India"
+        url="/offers"
+      />
 
       {/* ── Hero banner carousel ── */}
       <OffersBanner />

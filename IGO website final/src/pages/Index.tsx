@@ -204,19 +204,15 @@ const tickerItems = [
 ];
 
 const TickerBanner = () => (
-  <div className="bg-primary overflow-hidden py-3 flex">
-    <motion.div
-      className="flex items-center gap-0 whitespace-nowrap"
-      animate={{ x: ["0%", "-50%"] }}
-      transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
-    >
+  <div className="bg-primary overflow-hidden py-3">
+    <div className="animate-ticker flex items-center whitespace-nowrap">
       {[...tickerItems, ...tickerItems].map((item, i) => (
         <span key={i} className="text-white text-xs font-bold uppercase tracking-widest px-8 flex items-center gap-3">
           <span className="w-1.5 h-1.5 rounded-full bg-white/40 shrink-0" />
           {item}
         </span>
       ))}
-    </motion.div>
+    </div>
   </div>
 );
 
@@ -461,7 +457,7 @@ const ProjectGallerySection = () => {
     },
     {
       id: "02",
-      title: "Aquaculture project",
+      title: "Aquaculture Farming project",
       bg: "bg-[#F5F5F7]",
       hoverBg: "hover:bg-[#E8F5E9]",
       image: "/assets/projects/main page/aquaculture farming .jpg",
@@ -469,7 +465,7 @@ const ProjectGallerySection = () => {
     },
     {
       id: "03",
-      title: "Livestocks project",
+      title: "Livestock Farming project",
       bg: "bg-[#F5F5F7]",
       hoverBg: "hover:bg-[#E8F5E9]",
       image: "/assets/projects/main page/livestock farming.jpg",
@@ -694,47 +690,27 @@ const ProductEcosystem = () => {
 };
 
 // ─── IGO Group Brands Section ─────────────────────────────────────────────────
-const brands = [
-  {
-    name: "Farmers Factory",
-    logo: "https://www.igoagritechfarms.com/images/foot1.png",
-    desc: "End-to-end agricultural product processing, packaging, and manufacturing for high-tech farm outputs.",
-    tag: "Processing & Manufacturing",
-    color: "from-emerald-50 to-white",
-    accent: "bg-emerald-100",
-  },
-  {
-    name: "Valluvam",
-    logo: "https://www.igoagritechfarms.com/images/foot2.png",
-    desc: "Award-winning agri consultancy celebrating Tamil farming heritage with modern precision agriculture.",
-    tag: "Agri Consultancy",
-    color: "from-amber-50 to-white",
-    accent: "bg-amber-100",
-  },
-  {
-    name: "IGO Nursery",
-    logo: "https://www.igoagritechfarms.com/images/foot3.png",
-    desc: "Premium plant propagation and seedling production centre supplying quality transplants pan-India.",
-    tag: "Plant Propagation",
-    color: "from-lime-50 to-white",
-    accent: "bg-lime-100",
-  },
-  {
-    name: "Protein Cuts",
-    logo: "https://www.igoagritechfarms.com/images/foot4.png",
-    desc: "Farm-to-table premium protein products — fresh meat, poultry, and seafood from IGO's own livestock farms.",
-    tag: "Farm-to-Table",
-    color: "from-rose-50 to-white",
-    accent: "bg-rose-100",
-  },
-  {
-    name: "Financial Services",
-    logo: "https://www.igoagritechfarms.com/images/foot5.png",
-    desc: "Agri-financing, loan assistance, subsidy processing, and investment advisory for farmers and investors.",
-    tag: "Agri Finance",
-    color: "from-blue-50 to-white",
-    accent: "bg-blue-100",
-  },
+const brands: { name: string; logo: string; desc: string; tag: string }[] = [
+  // ── Active brands (with logos) ──
+  { name: "IGO Agritech Farms",                   logo: "/assets/brands/brand-1.jpg.jpeg",    tag: "Core Business",         desc: "India's leading Agri Engineering & Consulting brand — polyhouse, hydroponics, vertical farming, precision farming and livestock projects. Pan-India. MSME Award 2024." },
+  { name: "Farmers Factory",                       logo: "/assets/brands/brand-2.jpg.jpeg",    tag: "Processing & Mfg",      desc: "Farm to shop distribution brand. Bringing fresh farm produce directly to retail stores and consumers across India." },
+  { name: "Valluvam",                              logo: "/assets/brands/brand-3.jpg.jpeg",    tag: "Agri Consultancy",      desc: "Branded grocery staples celebrating Tamil farming heritage. Quality everyday essentials — As Pure As Nature." },
+  { name: "Protein Cuts",                          logo: "/assets/brands/brand-4.jpg.jpeg",    tag: "Farm-to-Table",         desc: "Premium meat, fish, and eggs retail brand. Fresh protein products straight from IGO's own livestock farms." },
+  { name: "IGO Agri Mart",                         logo: "/assets/brands/brand-5.jpg.jpeg",    tag: "Distribution",          desc: "Farm inputs and distribution network connecting quality agricultural inputs directly to farmers across India." },
+  { name: "IGO Nursery",                           logo: "/assets/brands/brand-6.jpg.jpeg",    tag: "Plant Propagation",     desc: "Premium nursery and landscaping solutions — supplying quality plants, seeds and horticultural products pan-India." },
+  { name: "Palm Cafe",                             logo: "/assets/brands/palm-cafe.jpeg",      tag: "F&B",                   desc: "The Healthy Food Joint — farm-to-table F&B brand creating 5,000 jobs for youth using IGO's own farm produce." },
+  { name: "IGO Exports & Imports",                 logo: "/assets/brands/igo-exports.jpeg",    tag: "Trade",                 desc: "International trade division connecting Indian agri products to global markets and bringing world-class inputs to India." },
+  { name: "IGO Tech Farming Scientist Foundation", logo: "/assets/brands/igo-foundation.jpeg", tag: "Foundation",            desc: "Research and education foundation advancing agri-science and technology for the next generation of tech farming scientists." },
+  // ── Upcoming brands (no logos) ──
+  { name: "IGO Mart",                   logo: "", tag: "Retail",      desc: "Supermarket chain offering quality products at accessible prices — part of IGO Group's consumer retail vision." },
+  { name: "IGO Fintech",                logo: "", tag: "Fintech",     desc: "Micro finance unit providing financial access and support to farmers and agricultural entrepreneurs across India." },
+  { name: "IGO Farmlands Estates",      logo: "", tag: "Real Estate", desc: "Agricultural land and property development — creating investment opportunities in farmland across India." },
+  { name: "IGO Wealth Management",      logo: "", tag: "Investment",  desc: "JV investment project providing wealth management and financial planning services to IGO Group stakeholders." },
+  { name: "IGO Group Franchise FICO",   logo: "", tag: "Franchise",   desc: "Franchise operations division expanding IGO Group brands across India through a structured franchise model." },
+  { name: "IGO Farm Gate Buy-Back",     logo: "", tag: "Programme",   desc: "Guaranteed buy-back programme for farmers — empowering agricultural entrepreneurs with assured market access." },
+  { name: "IGO Crop Care",              logo: "", tag: "Agri Input",  desc: "Quality crop care solutions for optimum yield and sustainable farming practices across all crop types." },
+  { name: "IGO Organic Pharma",         logo: "", tag: "Upcoming",    desc: "Future division developing organic pharmaceutical products from IGO's farm network — bridging agriculture and health." },
+  { name: "IGO Cosmetics",              logo: "", tag: "Upcoming",    desc: "Future personal care brand using natural farm-sourced ingredients. Farm to skin — the next frontier for IGO Group." },
 ];
 
 const BrandsSection = () => (
@@ -760,41 +736,47 @@ const BrandsSection = () => (
         </p>
       </motion.div>
 
-      {/* Brand Cards */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
-        {brands.map((b, i) => (
-          <motion.div
-            key={b.name}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: i * 0.09 }}
-            className="group bg-white border border-black/8 hover:border-[#1A4231]/30 rounded-[1.75rem] p-7 flex flex-col items-center text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#1A4231]/10"
-          >
-            {/* Logo — large & prominent */}
-            <div className="w-full h-36 rounded-2xl bg-[#F7FAF7] border border-[#1A4231]/8 group-hover:border-[#1A4231]/20 flex items-center justify-center mb-6 p-5 transition-all duration-500 group-hover:bg-[#EDF5EE] group-hover:scale-[1.03]">
-              <img
-                src={b.logo}
-                alt={b.name}
-                className="max-w-full max-h-full w-auto h-auto object-contain"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = "none";
-                }}
-              />
+      {/* Brand Cards — horizontal scroll */}
+      <div className="relative">
+        <div
+          className="flex gap-5 overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
+        >
+          {brands.map((b, i) => (
+            <div
+              key={b.name}
+              className="shrink-0 w-60 snap-start group bg-white border border-black/8 hover:border-[#1A4231]/30 rounded-[1.75rem] p-6 flex flex-col items-center text-center transition-all duration-500 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#1A4231]/10"
+            >
+              {/* Logo box */}
+              <div className="w-full h-32 rounded-2xl bg-[#F7FAF7] border border-[#1A4231]/8 group-hover:border-[#1A4231]/20 flex items-center justify-center mb-5 p-4 transition-all duration-500 group-hover:bg-[#EDF5EE]">
+                {b.logo ? (
+                  <img
+                    src={b.logo}
+                    alt={b.name}
+                    loading={i < 6 ? "eager" : "lazy"}
+                    className="max-w-full max-h-full w-auto h-auto object-contain"
+                  />
+                ) : (
+                  <span className="text-[9px] font-bold uppercase tracking-widest text-black/25">Coming Soon</span>
+                )}
+              </div>
+              {/* Tag */}
+              <div className="text-[9px] font-bold uppercase tracking-[0.25em] text-[#C5A03F] mb-1.5">{b.tag}</div>
+              {/* Name */}
+              <h3 className="text-sm font-bold text-[#1A1A1A] mb-2 leading-snug">{b.name}</h3>
+              {/* Description */}
+              <p className="text-[11px] text-black/45 group-hover:text-black/65 leading-relaxed transition-colors duration-300 flex-1">{b.desc}</p>
+              {/* Coming soon badge */}
+              {!b.logo && (
+                <span className="mt-3 px-3 py-1 rounded-full bg-[#E8F5E9] text-[9px] font-bold uppercase tracking-widest text-[#1A4231]">
+                  Coming Soon
+                </span>
+              )}
             </div>
-
-            {/* Tag */}
-            <div className="text-[9px] font-bold uppercase tracking-[0.25em] text-[#C5A03F] mb-2">
-              {b.tag}
-            </div>
-
-            {/* Name */}
-            <h3 className="text-base font-bold text-[#1A1A1A] mb-3 leading-snug">{b.name}</h3>
-
-            {/* Description */}
-            <p className="text-xs text-black/45 group-hover:text-black/65 leading-relaxed transition-colors duration-300">{b.desc}</p>
-          </motion.div>
-        ))}
+          ))}
+        </div>
+        {/* Right fade hint */}
+        <div className="pointer-events-none absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-[#F4F8F4] to-transparent" />
       </div>
 
       {/* Bottom strip */}
@@ -806,13 +788,13 @@ const BrandsSection = () => (
         className="mt-14 flex flex-col sm:flex-row items-center justify-between gap-4 pt-10 border-t border-black/8"
       >
         <p className="text-black/35 text-sm font-medium">
-          5 brands &nbsp;·&nbsp; 1 mission — transforming Indian agriculture
+          18 brands &nbsp;·&nbsp; 1 mission — transforming Indian agriculture
         </p>
         <Link
-          to="/about"
+          to="/igo-groups"
           className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] text-[#1A4231] hover:gap-4 transition-all"
         >
-          Learn About IGO Group <ArrowRight className="w-3.5 h-3.5" />
+          Explore Our Brands <ArrowRight className="w-3.5 h-3.5" />
         </Link>
       </motion.div>
     </div>

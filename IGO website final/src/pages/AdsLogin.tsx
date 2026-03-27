@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Lock, User, Eye, EyeOff, X, Phone } from "lucide-react";
 import { useAdsAuth } from "@/hooks/useAdsAuth";
+import SEO from "@/components/SEO";
 
 const AdsLogin = () => {
   const [username,    setUsername]    = useState("");
@@ -30,6 +31,7 @@ const AdsLogin = () => {
 
   return (
     <div className="min-h-screen bg-[#060E08] flex items-center justify-center px-4 relative overflow-hidden">
+      <SEO title="Ads Login" description="IGO Agritech Farms ads portal login." noIndex />
       {/* Background ambient glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-primary/8 blur-[140px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-emerald-900/20 blur-[120px] rounded-full pointer-events-none" />

@@ -100,7 +100,7 @@ const KNOWLEDGE: KB[] = [
   // Contact
   {
     keywords: ["contact", "phone", "call", "reach", "number", "address", "talk", "speak"],
-    answer: `📞 **Contact IGO Agritech Farms:**\n\n📱 Phone: **+91 73977 89803**\n📧 Email: igobackend1@gmail.com\n📍 HQ: No 17, Kovalan Street, Uthandi Kanathur, Chennai 600119\n🕐 Hours: Mon–Sat, 9 AM – 6 PM\n\nOr tap **WhatsApp** below for instant chat!`,
+    answer: `📞 **Contact IGO Agritech Farms:**\n\n📱 Phone: **+91 73977 89803**\n📧 Email: bankingbackend.indiagreen@gmail.com\n📍 HQ: No 17, Kovalan Street, Uthandi Kanathur, Chennai 600119\n🕐 Hours: Mon–Sat, 9 AM – 6 PM\n\nOr tap **WhatsApp** below for instant chat!`,
   },
   // WhatsApp
   {
@@ -155,12 +155,12 @@ const KNOWLEDGE: KB[] = [
   // Careers
   {
     keywords: ["career", "job", "vacancy", "hiring", "employment", "work", "join", "apply", "opening", "opportunity", "recruit"],
-    answer: `💼 **Careers at IGO Agritech Farms:**\n\nWe're always looking for passionate people to join our growing team!\n\n**Current Opportunities:**\n• Agri Engineers & Project Managers\n• Farm Technicians & Supervisors\n• Sales & Business Development Executives\n• Hydroponic & Aquaculture Specialists\n• Marketing & Digital Content Creators\n• Admin & Operations Staff\n\n📍 Positions across Chennai, Mysore & field locations pan-India\n\n📧 Send your CV to: igobackend1@gmail.com\n📞 Call **+91 73977 89803** for openings\n\nVisit our **Careers** page for current listings!`,
+    answer: `💼 **Careers at IGO Agritech Farms:**\n\nWe're always looking for passionate people to join our growing team!\n\n**Current Opportunities:**\n• Agri Engineers & Project Managers\n• Farm Technicians & Supervisors\n• Sales & Business Development Executives\n• Hydroponic & Aquaculture Specialists\n• Marketing & Digital Content Creators\n• Admin & Operations Staff\n\n📍 Positions across Chennai, Mysore & field locations pan-India\n\n📧 Send your CV to: bankingbackend.indiagreen@gmail.com\n📞 Call **+91 73977 89803** for openings\n\nVisit our **Careers** page for current listings!`,
   },
   // Internship
   {
     keywords: ["intern", "internship", "fresher", "graduate", "student", "college"],
-    answer: `🎓 **Internships at IGO Agritech Farms:**\n\nWe welcome fresh graduates and students passionate about agriculture!\n\n• **Farm Internship** — Hands-on training at live project sites\n• **Tech Internship** — Hydroponics, IoT & precision agri\n• **Business Internship** — Sales, marketing & agri consulting\n\n**Duration:** 1–6 months\n**Locations:** Chennai, Mysore & pan-India farm sites\n\n📧 Email your resume: igobackend1@gmail.com\n📞 Call **+91 73977 89803** to know more!`,
+    answer: `🎓 **Internships at IGO Agritech Farms:**\n\nWe welcome fresh graduates and students passionate about agriculture!\n\n• **Farm Internship** — Hands-on training at live project sites\n• **Tech Internship** — Hydroponics, IoT & precision agri\n• **Business Internship** — Sales, marketing & agri consulting\n\n**Duration:** 1–6 months\n**Locations:** Chennai, Mysore & pan-India farm sites\n\n📧 Email your resume: bankingbackend.indiagreen@gmail.com\n📞 Call **+91 73977 89803** to know more!`,
   },
   // Agri Startup Platform
   {
@@ -244,7 +244,7 @@ function getBotReply(input: string): string {
       return kb.answer;
     }
   }
-  return `Thank you for your message! 🌿 Our team will be happy to help.\n\nFor immediate assistance:\n📞 Call **+91 73977 89803**\n📲 WhatsApp us using the button below\n📧 Email: igobackend1@gmail.com\n\nYou can also try asking about our **services**, **projects**, or **subsidies**.`;
+  return `Thank you for your message! 🌿 Our team will be happy to help.\n\nFor immediate assistance:\n📞 Call **+91 73977 89803**\n📲 WhatsApp us using the button below\n📧 Email: bankingbackend.indiagreen@gmail.com\n\nYou can also try asking about our **services**, **projects**, or **subsidies**.`;
 }
 
 // ─── Render markdown-style bold ──────────────────────────────────────────────

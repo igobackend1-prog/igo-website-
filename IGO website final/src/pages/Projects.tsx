@@ -102,16 +102,13 @@ const Projects = () => {
           <h2 className="text-4xl md:text-6xl font-serif text-[#1A1A1A]">Select a Project Category</h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {categoryLinks.map((category: any, i: number) => {
-            const isFullWidth = i === 0 || i === 3;
-            const aspectClass = isFullWidth ? "aspect-[21/8]" : "aspect-[4/3]";
             const desc = CATEGORY_DESC[category.label] || "";
 
             return (
               <motion.div
                 key={category.href}
-                className={isFullWidth ? "col-span-2" : "col-span-2 md:col-span-1"}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -119,7 +116,7 @@ const Projects = () => {
               >
                 <Link
                   to={category.href}
-                  className={`group relative block ${aspectClass} rounded-[2.5rem] overflow-hidden shadow-2xl hover:shadow-[0_40px_80px_rgba(0,0,0,0.25)] transition-all duration-700`}
+                  className="group relative block aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl hover:shadow-[0_40px_80px_rgba(0,0,0,0.25)] transition-all duration-700"
                 >
                   <img
                     src={category.cardImage || "/assets/projects/main page/agri farming project .jpg"}
@@ -143,11 +140,11 @@ const Projects = () => {
 
                   {/* Content bottom */}
                   <div className="absolute inset-x-8 bottom-8">
-                    <h3 className={`font-serif text-white group-hover:-translate-y-1 transition-transform duration-500 leading-tight mb-3 ${isFullWidth ? "text-4xl md:text-5xl" : "text-2xl md:text-3xl"}`}>
+                    <h3 className="text-2xl md:text-3xl font-serif text-white group-hover:-translate-y-1 transition-transform duration-500 leading-tight mb-3">
                       {category.label}
                     </h3>
                     {desc && (
-                      <p className={`text-white/60 font-light leading-relaxed group-hover:text-white/80 transition-colors duration-500 ${isFullWidth ? "text-base max-w-2xl" : "text-sm"}`}>
+                      <p className="text-sm text-white/60 font-light leading-relaxed group-hover:text-white/80 transition-colors duration-500">
                         {desc}
                       </p>
                     )}

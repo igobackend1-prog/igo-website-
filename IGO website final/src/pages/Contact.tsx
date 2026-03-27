@@ -109,7 +109,7 @@ const Contact = () => {
     });
     if (dbError) console.error("Supabase insert error:", dbError.message);
 
-    // 2. Auto-send email to igobackend1@gmail.com
+    // 2. Auto-send email to bankingbackend.indiagreen@gmail.com
     const { success } = await sendFormEmail({
       formType:     "Contact Enquiry",
       name:         formData.name,
@@ -200,7 +200,7 @@ const Contact = () => {
                 <MessageCircle className="w-4 h-4" /> WhatsApp
               </a>
               <a
-                href="mailto:igobackend1@gmail.com"
+                href="mailto:bankingbackend.indiagreen@gmail.com"
                 className="inline-flex items-center gap-3 px-8 py-3.5 bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-bold rounded-full uppercase tracking-widest hover:bg-white/20 transition-all"
               >
                 <Mail className="w-4 h-4" /> Email Us
@@ -239,8 +239,8 @@ const Contact = () => {
               {
                 icon: <Mail className="w-5 h-5" />,
                 label: "Email Us",
-                lines: ["igobackend1@gmail.com", "bd2@igogroups.com"],
-                href: "mailto:igobackend1@gmail.com",
+                lines: ["bankingbackend.indiagreen@gmail.com", "bd2@igogroups.com"],
+                href: "mailto:bankingbackend.indiagreen@gmail.com",
               },
               {
                 icon: <MapPin className="w-5 h-5" />,
@@ -558,7 +558,7 @@ const Contact = () => {
       ═══════════════════════════════════════════════════ */}
       <section className="relative h-[520px] border-t border-black/5">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.4850698844434!2d80.24999731482187!3d12.900529490893615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525d8a2cc31b2b%3A0x2e6bce2cf9e4b93c!2sUthandi%2C%20Chennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3888.4850698844434!2d80.24999731482187!3d12.900529490893615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
           width="100%"
           height="100%"
           style={{ border: 0 }}

@@ -10,6 +10,7 @@ interface SEOProps {
   publishedTime?: string;
   author?: string;
   noIndex?: boolean;
+  jsonLd?: object;
 }
 
 const BASE_URL = "https://www.igoagritechfarms.com";
@@ -26,6 +27,7 @@ export default function SEO({
   publishedTime,
   author,
   noIndex = false,
+  jsonLd,
 }: SEOProps) {
   const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
   const canonicalUrl = url ? `${BASE_URL}${url}` : BASE_URL;
@@ -55,6 +57,13 @@ export default function SEO({
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
+
+      {/* JSON-LD Structured Data */}
+      {jsonLd && (
+        <script type="application/ld+json">
+          {JSON.stringify(jsonLd)}
+        </script>
+      )}
     </Helmet>
   );
 }

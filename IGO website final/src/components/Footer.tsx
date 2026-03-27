@@ -15,7 +15,7 @@ const serviceLinks = [
 ];
 
 const phones = ["+91 73977 89803", "+91 73977 89804", "+91 73977 89805"];
-const emails = ["igobackend1@gmail.com", "bd2@igogroups.com"];
+const emails = ["bankingbackend.indiagreen@gmail.com", "bd2@igogroups.com"];
 
 const socials = [
   { Icon: Facebook,  href: "https://www.facebook.com/IGOAgriTechfarms/",          label: "Facebook" },
@@ -41,7 +41,7 @@ const Footer = () => (
             <img
               src={companyInfo.logo}
               alt={companyInfo.name}
-              className="h-14 object-contain invert brightness-0 invert"
+              className="h-20 object-contain invert brightness-0 invert"
             />
           </Link>
 
@@ -178,12 +178,6 @@ const Footer = () => (
           <Link to="/privacy" className="hover:text-white/70 transition-colors">Privacy Policy</Link>
           <Link to="/terms" className="hover:text-white/70 transition-colors">Terms of Use</Link>
           <Link to="/ads/login" className="hover:text-white/50 transition-colors">Advertising Portal</Link>
-          <Link
-            to="/admin/login"
-            className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/8 border border-white/15 text-white/50 hover:bg-[#6FD898]/20 hover:border-[#6FD898]/40 hover:text-[#6FD898] transition-all"
-          >
-            Admin Login
-          </Link>
         </div>
       </div>
 
