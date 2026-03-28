@@ -340,7 +340,7 @@ const DetailView: React.FC<{ categorySlug: string; serviceSlug: string }> = ({ c
               </div>
               <div className="space-y-6">
                 <div className="aspect-[3/4] rounded-3xl overflow-hidden transition-all duration-700">
-                  <img src={serviceImage} className="w-full h-full object-cover" alt={service.label} />
+                  <img src={serviceImage} loading="lazy" className="w-full h-full object-cover" alt={service.label} />
                 </div>
                 <div className="aspect-square rounded-3xl bg-white/5 border border-white/10 p-8 flex flex-col justify-between">
                   <div className="w-10 h-10 rounded-full bg-[#C5A03F]/20 flex items-center justify-center">

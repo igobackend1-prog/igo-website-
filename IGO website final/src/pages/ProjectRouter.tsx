@@ -352,7 +352,7 @@ const CategoryView: React.FC<{ category: string }> = ({ category }) => {
           transition={{ duration: 1.8, ease: "easeOut" }}
           className="absolute inset-0"
         >
-          <img src={heroImg} alt={catItem.label} className="w-full h-full object-cover" />
+          <img src={heroImg} alt={catItem.label} loading="eager" className="w-full h-full object-cover" />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/70" />
 
@@ -497,7 +497,7 @@ const SubcategoryView: React.FC<{ category: string; subcategory: string }> = ({ 
           transition={{ duration: 1.8, ease: "easeOut" }}
           className="absolute inset-0"
         >
-          <img src={heroImg} alt={subItem.label} className="w-full h-full object-cover" />
+          <img src={heroImg} alt={subItem.label} loading="eager" className="w-full h-full object-cover" />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/70" />
 

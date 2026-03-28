@@ -295,7 +295,7 @@ const About = () => (
     <section className="py-32 bg-[#0C1A14] relative overflow-hidden">
       {/* Background texture */}
       <div className="absolute inset-0 opacity-50">
-        <img src="/assets/background page for agri starup and about .png" alt="" className="w-full h-full object-cover" />
+        <img src="/assets/background page for agri starup and about .png" alt="" loading="lazy" className="w-full h-full object-cover" />
       </div>
       <div className="absolute inset-0 bg-gradient-to-r from-[#0C1A14] via-[#0C1A14]/95 to-[#0C1A14]/80" />
 

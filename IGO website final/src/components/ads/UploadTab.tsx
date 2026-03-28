@@ -142,7 +142,7 @@ const UploadTab = ({ editingPoster, onEditComplete }: Props) => {
 
           {preview ? (
             <div className="relative rounded-xl overflow-hidden border border-white/15 group">
-              <img src={preview} alt="Preview" className="w-full h-52 object-cover" />
+              <img src={preview} alt="Preview" loading="lazy" className="w-full h-52 object-cover" />
               <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
                 <button
                   type="button"

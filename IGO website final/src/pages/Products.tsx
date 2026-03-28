@@ -82,6 +82,7 @@ const Products = () => {
                       : "/assets/projects/agri_farming.jpg")
                     } 
                     alt={category.label}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                   />
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-500" />
@@ -138,7 +139,7 @@ const Products = () => {
                </div>
             </div>
             <div className="relative rounded-[3rem] overflow-hidden aspect-square border border-white/10">
-               <img src="/assets/product/main page image/Agri Essentials.jpg" alt="Product Quality" className="w-full h-full object-cover" />
+               <img src="/assets/product/main page image/Agri Essentials.jpg" alt="Product Quality" loading="lazy" className="w-full h-full object-cover" />
                <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60" />
                <div className="absolute inset-0 flex items-center justify-center p-20 text-center">
                   <ShieldCheck className="w-32 h-32 text-primary opacity-20 absolute" />

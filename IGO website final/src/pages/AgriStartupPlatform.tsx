@@ -112,7 +112,7 @@ const AgriStartupPlatform = () => (
         transition={{ duration: 2, ease: "easeOut" }}
         className="absolute inset-0"
       >
-        <img src="/assets/background page for agri starup and about .png" alt="" className="w-full h-full object-cover" />
+        <img src="/assets/background page for agri starup and about .png" alt="" loading="lazy" className="w-full h-full object-cover" />
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-b from-[#0C1A14]/60 via-[#0C1A14]/50 to-[#0C1A14]" />
 

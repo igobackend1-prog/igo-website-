@@ -156,7 +156,7 @@ const UpdateTab = ({ onEdit, onAddNew, refreshKey }: Props) => {
                 {/* Thumbnail */}
                 <div className="w-20 h-14 rounded-lg overflow-hidden shrink-0 bg-white/8">
                   {o.image ? (
-                    <img src={o.image} alt={o.title} className="w-full h-full object-cover" />
+                    <img src={o.image} alt={o.title} loading="lazy" className="w-full h-full object-cover" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
                       <span className="text-white/20 text-[10px]">No img</span>

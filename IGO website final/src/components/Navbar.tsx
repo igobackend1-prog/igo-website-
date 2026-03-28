@@ -56,7 +56,7 @@ const MegaMenu = ({ link }: { link: any }) => {
               )}
               <div className={`relative z-10 w-12 h-12 shrink-0 rounded-full overflow-hidden flex items-center justify-center border border-black/5 shadow-sm bg-white transition-transform duration-300 ${activeSector === sector.label ? "scale-110 shadow-md ring-2 ring-primary/20" : "group-hover:scale-110"}`}>
                 {sector.icon && typeof sector.icon === 'string' && sector.icon.startsWith('/') ? (
-                  <img src={sector.icon} alt={sector.label} className="w-full h-full object-cover object-center" />
+                  <img src={sector.icon} alt={sector.label} loading="lazy" className="w-full h-full object-cover object-center" />
                 ) : (
                   <span className="text-2xl drop-shadow-sm">{sector.icon}</span>
                 )}
@@ -82,7 +82,7 @@ const MegaMenu = ({ link }: { link: any }) => {
                   <div className="w-16 h-16 rounded-full overflow-hidden border border-black/10 shadow-lg bg-white flex items-center justify-center p-0.5 shrink-0">
                     <div className="w-full h-full rounded-full overflow-hidden">
                       {currentSector.icon && typeof currentSector.icon === 'string' && currentSector.icon.startsWith('/') ? (
-                        <img src={currentSector.icon} alt={currentSector.label} className="w-full h-full object-cover object-center" />
+                        <img src={currentSector.icon} alt={currentSector.label} loading="lazy" className="w-full h-full object-cover object-center" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center bg-slate-50">
                           <span className="text-3xl drop-shadow-md">{currentSector.icon}</span>
@@ -118,7 +118,7 @@ const MegaMenu = ({ link }: { link: any }) => {
                           {subSector.icon ? (
                             <div className="w-8 h-8 rounded-xl bg-slate-50 border border-black/5 flex items-center justify-center text-primary shadow-sm shrink-0 overflow-hidden group-hover/sub:scale-110 transition-transform">
                               {typeof subSector.icon === 'string' && subSector.icon.startsWith('/') ? (
-                                <img src={subSector.icon} className="w-full h-full object-cover object-center" alt="" />
+                                <img src={subSector.icon} loading="lazy" className="w-full h-full object-cover object-center" alt="" />
                               ) : typeof subSector.icon === 'string' ? (
                                 <span className="text-lg">{subSector.icon}</span>
                               ) : (
@@ -153,7 +153,7 @@ const MegaMenu = ({ link }: { link: any }) => {
                       >
                          <div className="w-12 h-12 rounded-xl bg-white border border-black/5 flex items-center justify-center text-black/40 group-hover/service:text-primary shadow-sm shrink-0 transition-colors overflow-hidden">
                             {(subSector.icon || subSector.image) && typeof (subSector.icon || subSector.image) === 'string' && (subSector.icon || subSector.image).startsWith('/') ? (
-                              <img src={subSector.icon || subSector.image} className="w-full h-full object-cover object-center rounded-xl" alt="" />
+                              <img src={subSector.icon || subSector.image} loading="lazy" className="w-full h-full object-cover object-center rounded-xl" alt="" />
                             ) : typeof subSector.icon === 'string' ? (
                               <span className="text-xl">{subSector.icon}</span>
                             ) : subSector.icon ? (
@@ -204,7 +204,7 @@ const MobileNavLink = ({ link, depth = 0 }: { link: any, depth?: number }) => {
           }}
         >
           {link.icon && typeof link.icon === 'string' && link.icon.startsWith('/') ? (
-            <img src={link.icon} alt="" className={`object-contain opacity-70 ${depth === 0 ? "w-6 h-6" : "w-5 h-5"}`} />
+            <img src={link.icon} alt="" loading="lazy" className={`object-contain opacity-70 ${depth === 0 ? "w-6 h-6" : "w-5 h-5"}`} />
           ) : link.icon && typeof link.icon !== 'string' ? (
             <link.icon className={`opacity-70 ${depth === 0 ? "w-6 h-6" : "w-5 h-5"}`} />
           ) : (
@@ -281,7 +281,7 @@ const Navbar = () => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navClasses}`}>
       <div className="container mx-auto px-6 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-4 group z-50">
-          <img src={companyInfo.logo} alt="IGO Logo" className={`h-14 w-auto drop-shadow-md group-hover:scale-105 transition-transform ${logoInvertClass}`} />
+          <img src={companyInfo.logo} alt="IGO Logo" loading="eager" className={`h-14 w-auto drop-shadow-md group-hover:scale-105 transition-transform ${logoInvertClass}`} />
           <div className="flex flex-col leading-none drop-shadow-sm">
             <span className={`text-2xl font-black tracking-tight uppercase font-display ${textColorClass}`}>IGO <span className="text-primary">Agritech</span></span>
           </div>

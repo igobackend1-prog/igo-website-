@@ -66,7 +66,7 @@ const Blog = () => (
             <article key={post.id} className="premium-card overflow-hidden group">
               <Link to={`/blog/${post.id}`}>
                 <div className="aspect-[16/10] overflow-hidden bg-muted relative">
-                  <img src={post.image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
+                  <img src={post.image} alt={post.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
                   <div className="absolute top-8 left-8 glass px-5 py-2.5 rounded-2xl text-[10px] font-black text-primary uppercase tracking-[0.3em] border border-white/40">
                     {post.date}
                   </div>

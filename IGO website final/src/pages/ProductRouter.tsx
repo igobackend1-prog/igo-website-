@@ -147,7 +147,7 @@ const CategoryView: React.FC<{ category: string }> = ({ category }) => {
           transition={{ duration: 1.6, ease: 'easeOut' }}
           className="absolute inset-0"
         >
-          <img src={meta.cardImage} alt={meta.label} className="w-full h-full object-cover" />
+          <img src={meta.cardImage} alt={meta.label} loading="eager" className="w-full h-full object-cover" />
         </motion.div>
         <div className="container mx-auto px-6 relative z-10">
           {/* Breadcrumb */}

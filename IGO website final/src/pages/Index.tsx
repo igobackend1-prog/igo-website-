@@ -668,6 +668,7 @@ const ProductEcosystem = () => {
               <img 
                 src={(cat as any).cardImage || (cat.icon && typeof cat.icon === 'string' ? cat.icon : "/assets/projects/agri_farming.jpg")}
                 alt={cat.label}
+                loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />
               <div className="absolute inset-x-0 bottom-0 p-10 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10 transition-opacity duration-500 opacity-90 group-hover:opacity-100">
