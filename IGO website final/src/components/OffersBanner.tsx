@@ -271,7 +271,7 @@ const OffersBanner = ({ heroMode = false }: OffersBannerProps) => {
 
   useEffect(() => {
     if (posters.length <= 1 || isPaused) return;
-    const id = setInterval(goNext, 3_000);
+    const id = setInterval(goNext, 4000);
     return () => clearInterval(id);
   }, [posters.length, isPaused, goNext]);
 
@@ -382,7 +382,7 @@ const OffersBanner = ({ heroMode = false }: OffersBannerProps) => {
               key={idx + "-bar"}
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
-              transition={{ duration: 3, ease: "linear" }}
+              transition={{ duration: 4, ease: "linear" }}
               style={{ originX: 0 }}
               className="h-full bg-white/55 w-full"
             />

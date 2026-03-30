@@ -98,9 +98,25 @@ export const CTA_PRESETS = [
 ];
 
 // ─── Default seed posters (shown on first load before any uploads) ───────────
-const SEED_KEY = "igo_offers_seeded_v1";
+const SEED_KEY = "igo_offers_seeded_v2";
 
 const DEFAULT_OFFERS: OfferPoster[] = [
+  {
+    id: "seed_0",
+    title: "",
+    subtitle: "",
+    badge: "IGO GROUP",
+    ctaLabel: "Discover More",
+    ctaLink: "/about",
+    image: "/assets/demo poster/main-page-image.png",
+    bgColor: "#1a5c1a",
+    isActive: true,
+    displayOrder: 0,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+    expiryDate: null,
+    note: "Primary IGO Group Brand Slide",
+  },
   {
     id: "seed_1",
     title: "",

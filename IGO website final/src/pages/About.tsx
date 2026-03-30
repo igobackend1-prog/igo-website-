@@ -38,7 +38,7 @@ const About = () => (
   <div className="bg-white min-h-screen selection:bg-agri-green-50 selection:text-agri-green-800">
     <SEO
       title="About Us | IGO Agritech Farms"
-      description="Learn about IGO Agritech Farms — 10+ years of excellence in agri engineering & consulting, 75+ awards, 2000+ team members, and a mission to transform Indian agriculture with precision farming."
+      description="Learn about IGO Agritech Farms — 15+ years of excellence in agri engineering & consulting, 75+ awards, 2,000+ team members, and a mission to transform Indian agriculture with precision farming."
       keywords="about IGO Agritech, agri consulting company India, agri engineering Chennai, MSME award agri, precision farming company"
       url="/about"
     />
@@ -79,7 +79,7 @@ const About = () => (
           </motion.h1>
 
           <motion.p variants={fader} className="text-white/60 text-xl md:text-2xl font-light leading-relaxed mb-14 max-w-3xl mx-auto">
-            India's leading agri engineering and consulting brand — 1,000+ projects, 28 states, 10+ years of transforming the way India farms.
+            India's leading agri engineering and consulting brand — 15,000+ successful projects, 28+ states, 15+ years of transforming the way India farms.
           </motion.p>
 
           <motion.div variants={fader} className="flex flex-wrap justify-center gap-4">
@@ -160,7 +160,7 @@ const About = () => (
             transition={{ delay: 0.1 }}
             className="text-black/50 text-base font-light leading-relaxed max-w-sm md:text-right"
           >
-            India's most trusted name in agricultural engineering — 1,000+ projects across 28 states.
+            India's most trusted brand in agricultural engineering — 15,000+ successful projects across 28+ states.
           </motion.p>
         </div>
 
@@ -207,7 +207,7 @@ const About = () => (
               {companyInfo.description}
             </p>
             <p className="text-black/60 text-base leading-relaxed font-light">
-              From a single polyhouse installation in Tamil Nadu to 1,000+ projects spanning 28 states — IGO Agritech Farms has grown into India's most trusted name in agricultural engineering and consulting. Every project we deliver carries the promise of precision, sustainability, and lasting impact.
+              From a single polyhouse installation in Tamil Nadu to 15,000+ successful projects spanning 28+ states — IGO Agritech Farms has grown into India's most trusted brand in agricultural engineering and consulting. Every project we deliver carries the promise of precision, sustainability, and lasting impact.
             </p>
           </motion.div>
 
@@ -614,10 +614,10 @@ const About = () => (
           {/* Bottom trust strip */}
           <div className="flex flex-wrap justify-center gap-8 mt-14 pt-10 border-t border-white/10">
             {[
-              { value: "1000+", label: "Projects Delivered" },
-              { value: "28", label: "States Covered" },
+              { value: "15,000+", label: "Happy Clients" },
+              { value: "28+", label: "States Covered" },
+              { value: "15,000+", label: "Successful Projects" },
               { value: "75+", label: "Awards Won" },
-              { value: "10+", label: "Years of Excellence" },
             ].map((s) => (
               <div key={s.label} className="text-center">
                 <p className="text-2xl font-bold text-agri-gold-500">{s.value}</p>

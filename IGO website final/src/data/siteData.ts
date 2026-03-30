@@ -40,10 +40,10 @@ export const companyInfo = {
 };
 
 export const stats = [
-  { label: "Years of Experience", value: "15+" },
-  { label: "Successful Projects", value: "15,000+" },
-  { label: "Happy Clients", value: "15,000+" },
-  { label: "Team Members", value: "2,000+" },
+  { label: "Happy Clients", value: "15,000+", sublabel: "VERIFIED" },
+  { label: "Successful Projects", value: "15,000+", sublabel: "VERIFIED" },
+  { label: "States Covered", value: "28+", sublabel: "VERIFIED" },
+  { label: "Awards Won", value: "75+", sublabel: "VERIFIED" },
 ];
 
 export const projects = [
@@ -1051,9 +1051,7 @@ export const indiaPresence = {
     { label: "Happy Clients", value: "15,000+", sublabel: "VERIFIED" },
     { label: "Projects Done", value: "15,000+", sublabel: "VERIFIED" },
     { label: "Experience", value: "15+ Years", sublabel: "VERIFIED" },
-    { label: "Employees", value: "2,000+", sublabel: "VERIFIED" },
-    { label: "Awards Won", value: "75+", sublabel: "VERIFIED" },
-    { label: "States Covered", value: "28+", sublabel: "VERIFIED" },
+    { label: "Experts", value: "2,000+", sublabel: "VERIFIED" },
   ],
   states: [
     { name: "Andhra Pradesh", isHub: true },

@@ -260,18 +260,18 @@ const IndiaPresence = () => {
                     stiffness: 70
                   }}
                   whileHover={{ y: -15, scale: 1.03 }}
-                  className="p-12 md:p-14 rounded-[4rem] bg-white border border-agri-earth-100 shadow-[0_25px_60px_-20px_rgba(0,0,0,0.06)] hover:shadow-[0_70px_120px_-30px_rgba(25,60,30,0.18)] transition-all duration-700 group overflow-hidden relative"
+                  className="p-8 md:p-10 rounded-[2.5rem] bg-white border border-agri-earth-100 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.04)] hover:shadow-[0_40px_80px_-20px_rgba(25,60,30,0.12)] transition-all duration-700 group overflow-hidden relative"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-transparent to-agri-earth-50/60 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-transparent to-agri-earth-50/40 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                   
                   <div className="relative z-10">
-                    <div className="text-[10px] font-black uppercase tracking-[0.3em] text-agri-gold-600 mb-2">
+                    <div className="text-[10px] font-black uppercase tracking-[0.25em] text-agri-gold-600 mb-2">
                        {stat.sublabel}
                     </div>
-                    <div className="text-7xl md:text-8xl font-black text-agri-earth-900 mb-4 group-hover:text-agri-green-800 transition-all duration-500 tracking-tighter leading-none">
+                    <div className="text-5xl md:text-6xl font-black text-agri-earth-900 mb-2 group-hover:text-agri-green-800 transition-all duration-500 tracking-tighter leading-none">
                       {stat.value}
                     </div>
-                    <div className="text-[12px] md:text-base font-black uppercase tracking-[0.3em] text-agri-earth-900/35 group-hover:text-agri-earth-900/80 transition-colors">
+                    <div className="text-[11px] md:text-sm font-black uppercase tracking-[0.2em] text-agri-earth-900/35 group-hover:text-agri-earth-900/80 transition-colors">
                       {stat.label}
                     </div>
                   </div>

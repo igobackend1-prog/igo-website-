@@ -6,23 +6,23 @@ import { ArrowRight, Wheat, Fish, Tractor, Droplets, Leaf, Shield, Hammer, Micro
 import { stats, projects, services, navLinks, igoBrands } from "@/data/siteData";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import OffersBanner from "@/components/OffersBanner";
-import IndiaPresence from "@/components/IndiaPresence";
 import { getActiveOffers, initDefaultOffers } from "@/data/offersData";
 
 const HERO_SLIDES = [
-  { src: "/assets/front 1st image .png",                                                              label: "IGO Agritech",        alt: "IGO Agritech Farms",       isPoster: true },
-  { src: "/assets/demo poster/Copy of Website cover page.jpg.jpeg",                                   label: "Ramadan Sale",        alt: "Ramadan Sale Offer",       isPoster: true },
-  { src: "/assets/demo poster/Copy of Website cover page (1).jpg.jpeg",                               label: "Special Offer",       alt: "Special Ramzan Offer",     isPoster: true },
-  { src: "/assets/home page image .png",                                                              label: "Smart Farms",         alt: "Smart Farm" },
-  { src: "/assets/projects/project subcategories/subcategories/Vertical  farming .jpg",               label: "Vertical Farming",    alt: "Vertical Farming" },
-  { src: "/assets/projects/project subcategories/subcategories/hydroponic farming .jpg",              label: "Hydroponics",         alt: "Hydroponics" },
-  { src: "/assets/core bussiness picture/aquatic_plants.jpg",                                         label: "Aquaculture",         alt: "Aquaculture" },
-  { src: "/assets/projects/project subcategories/subcategories/dairy farming .jpg",                   label: "Dairy Farming",       alt: "Dairy Farming" },
-  { src: "/assets/core bussiness picture/farm_engineering.jpg",                                       label: "Farm Engineering",    alt: "Farm Engineering" },
-  { src: "/assets/projects/project subcategories/subcategories/solar agriculture project .jpg",       label: "Solar Agriculture",   alt: "Solar Agriculture" },
-  { src: "/assets/projects/project subcategories/subcategories/mushroom farming .jpg",                label: "Mushroom Farming",    alt: "Mushroom Farming" },
-  { src: "/assets/core bussiness picture/livestock.jpg",                                              label: "Livestock",           alt: "Livestock" },
-  { src: "/assets/projects/project subcategories/subcategories/biofloc farming .jpg",                 label: "Biofloc Farming",     alt: "Biofloc Farming" },
+  { src: "/assets/main-page-image.png", label: "IGO Group", alt: "IGO Group Advertisement", isPoster: true },
+  { src: "/assets/front 1st image .png", label: "IGO Agritech", alt: "IGO Agritech Farms", isPoster: true },
+  { src: "/assets/demo poster/Copy of Website cover page.jpg.jpeg", label: "Ramadan Sale", alt: "Ramadan Sale Offer", isPoster: true },
+  { src: "/assets/demo poster/Copy of Website cover page (1).jpg.jpeg", label: "Special Offer", alt: "Special Ramzan Offer", isPoster: true },
+  { src: "/assets/home page image .png", label: "Smart Farms", alt: "Smart Farm" },
+  { src: "/assets/projects/project subcategories/subcategories/Vertical  farming .jpg", label: "Vertical Farming", alt: "Vertical Farming" },
+  { src: "/assets/projects/project subcategories/subcategories/hydroponic farming .jpg", label: "Hydroponics", alt: "Hydroponics" },
+  { src: "/assets/core bussiness picture/aquatic_plants.jpg", label: "Aquaculture", alt: "Aquaculture" },
+  { src: "/assets/projects/project subcategories/subcategories/dairy farming .jpg", label: "Dairy Farming", alt: "Dairy Farming" },
+  { src: "/assets/core bussiness picture/farm_engineering.jpg", label: "Farm Engineering", alt: "Farm Engineering" },
+  { src: "/assets/projects/project subcategories/subcategories/solar agriculture project .jpg", label: "Solar Agriculture", alt: "Solar Agriculture" },
+  { src: "/assets/projects/project subcategories/subcategories/mushroom farming .jpg", label: "Mushroom Farming", alt: "Mushroom Farming" },
+  { src: "/assets/core bussiness picture/livestock.jpg", label: "Livestock", alt: "Livestock" },
+  { src: "/assets/projects/project subcategories/subcategories/biofloc farming .jpg", label: "Biofloc Farming", alt: "Biofloc Farming" },
 ];
 
 const fader: Variants = {
@@ -44,11 +44,13 @@ const HeroSection = () => {
   useImagePreloader(heroImageUrls, current, 2);
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    // Slide 0 (main page ad) stays 5s; all others 4.5s
+    const delay = current === 0 ? 5000 : 4500;
+    const timer = setTimeout(() => {
       setCurrent((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 4500);
-    return () => clearInterval(timer);
-  }, []);
+    }, delay);
+    return () => clearTimeout(timer);
+  }, [current]);
 
   // Navbar is fixed at 88px tall (h-14 logo + py-4 padding).
   // Section is 100vh total. Poster starts at 88px (below navbar),
@@ -152,14 +154,14 @@ const HeroSection = () => {
           overshoots the center of the image. We shift the arrows down by NAVBAR_H/2 to
           re-centre them on the visible image. */}
       <button
-        onClick={() => setCurrent((current - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
+        onClick={() => setCurrent((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)}
         className="absolute left-5 z-20 w-11 h-11 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 flex items-center justify-center hover:bg-white/30 transition-all -translate-y-1/2"
         style={{ top: isPoster ? `calc(50% + ${NAVBAR_H / 2}px)` : "50%" }}
       >
         <ArrowRight className="w-4 h-4 text-white rotate-180" />
       </button>
       <button
-        onClick={() => setCurrent((current + 1) % HERO_SLIDES.length)}
+        onClick={() => setCurrent((prev) => (prev + 1) % HERO_SLIDES.length)}
         className="absolute right-5 z-20 w-11 h-11 rounded-full bg-white/15 backdrop-blur-sm border border-white/25 flex items-center justify-center hover:bg-white/30 transition-all -translate-y-1/2"
         style={{ top: isPoster ? `calc(50% + ${NAVBAR_H / 2}px)` : "50%" }}
       >
@@ -176,9 +178,8 @@ const HeroSection = () => {
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              className={`rounded-full transition-all duration-500 ${
-                i === current ? "w-8 h-2 bg-white" : "w-2 h-2 bg-white/35 hover:bg-white/60"
-              }`}
+              className={`rounded-full transition-all duration-500 ${i === current ? "w-8 h-2 bg-white" : "w-2 h-2 bg-white/35 hover:bg-white/60"
+                }`}
             />
           ))}
         </div>
@@ -277,7 +278,7 @@ const WhyChooseSection = () => (
           </div>
 
           <div className="grid grid-cols-2 gap-4">
-            <MiniStatCard value="15+"   label="Years of Experience" />
+            <MiniStatCard value="15+" label="Years of Experience" />
             <MiniStatCard value="15,000+" label="Successful Projects" />
             <MiniStatCard value="15,000+" label="Happy Clients" />
             <MiniStatCard value="2,000+" label="Team Members" />
@@ -536,7 +537,7 @@ const ProjectGallerySection = () => {
                 </div>
               </div>
               {/* Overlapping Image at bottom with soft-organic merge mask */}
-              <div 
+              <div
                 className="absolute bottom-0 left-0 right-0 h-[65%] pointer-events-none"
                 style={{
                   maskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,1) 100%)",
@@ -563,7 +564,7 @@ const ProjectGallerySection = () => {
 
 const FeatureSection = () => {
   const serviceLinks = navLinks.find(l => l.label === "Services")?.children || [];
-  
+
   return (
     <section className="py-32 bg-agri-earth-100 overflow-hidden selection:bg-agri-green-50 selection:text-agri-green-800 content-defer">
       <div className="container mx-auto px-6">
@@ -594,7 +595,7 @@ const FeatureSection = () => {
                 className="group relative bg-white rounded-[2rem] p-8 md:p-10 min-h-[460px] md:min-h-[550px] flex flex-col border border-black/5 hover:border-agri-gold-500/20 transition-all hover:shadow-[0_40px_80px_rgba(0,0,0,0.06)] cursor-pointer overflow-hidden"
               >
                 <Link to={s.href} className="absolute inset-0 z-20" />
-                
+
                 {/* Title & Index Header */}
                 <div className="flex justify-between items-start mb-8">
                   <div className="w-12 h-12 rounded-2xl bg-agri-green-800/5 flex items-center justify-center group-hover:bg-agri-gold-500/10 transition-colors">
@@ -607,17 +608,17 @@ const FeatureSection = () => {
                   <h2 className="text-2xl font-black text-agri-gold-500 mb-6 leading-tight group-hover:text-agri-green-800 transition-colors duration-300 min-h-[5rem]">
                     {s.label}
                   </h2>
-                  
+
                   {/* Layer Previews (Sub-categories) */}
                   <div className="space-y-3 mb-8 min-h-[140px]">
-                     {s.children?.slice(0, 4).map((child: any) => (
-                       <div key={child.label} className="flex items-center gap-2 group-hover:translate-x-1 transition-transform">
-                          <div className="w-1 h-1 rounded-full bg-agri-green-800/40" />
-                          <span className="text-[12px] font-bold text-black/50 group-hover:text-black/80 transition-colors uppercase tracking-[0.15em] line-clamp-1">
-                            {child.label}
-                          </span>
-                       </div>
-                     ))}
+                    {s.children?.slice(0, 4).map((child: any) => (
+                      <div key={child.label} className="flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                        <div className="w-1 h-1 rounded-full bg-agri-green-800/40" />
+                        <span className="text-[12px] font-bold text-black/50 group-hover:text-black/80 transition-colors uppercase tracking-[0.15em] line-clamp-1">
+                          {child.label}
+                        </span>
+                      </div>
+                    ))}
                   </div>
 
                   <div className="w-10 h-10 rounded-full bg-slate-50 border border-black/5 flex items-center justify-center text-black/40 group-hover:bg-agri-gold-500 group-hover:text-white transition-all transform group-hover:translate-x-1 shadow-sm">
@@ -647,7 +648,7 @@ const FeatureSection = () => {
 
 const ProductEcosystem = () => {
   const productLinks = navLinks.find(l => l.label === "Products")?.children || [];
-  
+
   return (
     <section className="py-40 bg-white overflow-hidden border-t border-black/5 content-defer">
       <div className="container mx-auto px-6">
@@ -662,10 +663,10 @@ const ProductEcosystem = () => {
             </h2>
           </div>
           <Link to="/products" className="group flex items-center gap-4 text-xs font-bold uppercase tracking-[0.2em] text-black">
-             Explore All <span className="hidden sm:inline">Products</span> 
-             <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all">
-                <ArrowRight className="w-5 h-5" />
-             </div>
+            Explore All <span className="hidden sm:inline">Products</span>
+            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all">
+              <ArrowRight className="w-5 h-5" />
+            </div>
           </Link>
         </div>
 
@@ -680,22 +681,22 @@ const ProductEcosystem = () => {
               className="group relative h-[400px] md:h-[500px] rounded-[3rem] overflow-hidden bg-slate-100 border border-black/5 shadow-sm hover:shadow-2xl transition-all duration-700"
             >
               <Link to={cat.href} className="absolute inset-0 z-20" />
-              <img 
+              <img
                 src={(cat as any).cardImage || (cat.icon && typeof cat.icon === 'string' ? cat.icon : "/assets/projects/agri_farming.jpg")}
                 alt={cat.label}
                 loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
               />
               <div className="absolute inset-x-0 bottom-0 p-10 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10 transition-opacity duration-500 opacity-90 group-hover:opacity-100">
-                 <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/50 mb-3 block">Product Sector {i+1}</span>
-                 <h3 className="text-3xl font-black text-white mb-6 leading-tight group-hover:translate-x-2 transition-transform duration-500 drop-shadow-lg">{cat.label}</h3>
-                 <div className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-agri-gold-500 opacity-0 group-hover:opacity-100 transition-all transform translate-y-4 group-hover:translate-y-0">
-                    View Catalog <ArrowRight className="w-4 h-4" />
-                 </div>
+                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/50 mb-3 block">Product Sector {i + 1}</span>
+                <h3 className="text-3xl font-black text-white mb-6 leading-tight group-hover:translate-x-2 transition-transform duration-500 drop-shadow-lg">{cat.label}</h3>
+                <div className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-agri-gold-500 opacity-0 group-hover:opacity-100 transition-all transform translate-y-4 group-hover:translate-y-0">
+                  View Catalog <ArrowRight className="w-4 h-4" />
+                </div>
               </div>
 
               <div className="absolute top-10 right-10 w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-75 group-hover:scale-100">
-                 <Leaf className="w-5 h-5 text-white" />
+                <Leaf className="w-5 h-5 text-white" />
               </div>
             </motion.div>
           ))}
@@ -758,221 +759,221 @@ const EngineeringDNA = () => {
 };
 
 // ─── Brands Marquee ──────────────────────────────────────────────────────────
-const B_CARD       = 320;
-const B_GAP        = 32;
-const B_STEP       = B_CARD + B_GAP;
-const B_HALF       = igoBrands.length * B_STEP;
+const B_CARD = 320;
+const B_GAP = 32;
+const B_STEP = B_CARD + B_GAP;
+const B_HALF = igoBrands.length * B_STEP;
 const B_AUTO_SPEED = 1.2;   // px/frame during auto-scroll
-const B_LERP_AUTO  = 0.07;  // easing for auto-scroll (buttery)
-const B_LERP_DRAG  = 0.45;  // easing during drag (nearly instant = glued to finger)
+const B_LERP_AUTO = 0.07;  // easing for auto-scroll (buttery)
+const B_LERP_DRAG = 0.45;  // easing during drag (nearly instant = glued to finger)
 
 const BrandsSection = () => {
-    const stripRef   = useRef<HTMLDivElement>(null);
-    const rafRef     = useRef<number>(0);
-    const pos        = useRef(0);   // rendered position
-    const target     = useRef(0);   // desired position — auto-scroll ALWAYS advances this
-    const isDragging = useRef(false);
-    const prevDragX  = useRef(0);   // last frame's drag X for incremental delta
-    const velX       = useRef(0);   // px/ms for momentum throw
-    const lastMoveX  = useRef(0);
-    const lastMoveT  = useRef(0);
-    const [grabbing, setGrabbing] = useState(false);
+  const stripRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number>(0);
+  const pos = useRef(0);   // rendered position
+  const target = useRef(0);   // desired position — auto-scroll ALWAYS advances this
+  const isDragging = useRef(false);
+  const prevDragX = useRef(0);   // last frame's drag X for incremental delta
+  const velX = useRef(0);   // px/ms for momentum throw
+  const lastMoveX = useRef(0);
+  const lastMoveT = useRef(0);
+  const [grabbing, setGrabbing] = useState(false);
 
-    const displayBrands = [...igoBrands, ...igoBrands];
+  const displayBrands = [...igoBrands, ...igoBrands];
 
-    // ── RAF loop — auto-scroll NEVER stops; drag adds on top of it ───────────
-    useEffect(() => {
-        const strip = stripRef.current;
-        if (!strip) return;
+  // ── RAF loop — auto-scroll NEVER stops; drag adds on top of it ───────────
+  useEffect(() => {
+    const strip = stripRef.current;
+    if (!strip) return;
 
-        const tick = () => {
-            // Always advance — no pause, no hover stop, rolls forever
-            target.current += B_AUTO_SPEED;
+    const tick = () => {
+      // Always advance — no pause, no hover stop, rolls forever
+      target.current += B_AUTO_SPEED;
 
-            // Seamless wrap — shift both together to preserve lerp gap
-            if (target.current >= B_HALF) { target.current -= B_HALF; pos.current -= B_HALF; }
-            if (target.current <  0)      { target.current += B_HALF; pos.current += B_HALF; }
+      // Seamless wrap — shift both together to preserve lerp gap
+      if (target.current >= B_HALF) { target.current -= B_HALF; pos.current -= B_HALF; }
+      if (target.current < 0) { target.current += B_HALF; pos.current += B_HALF; }
 
-            // High lerp while dragging so cards are glued to finger
-            const lerp = isDragging.current ? B_LERP_DRAG : B_LERP_AUTO;
-            pos.current += (target.current - pos.current) * lerp;
-            strip.style.transform = `translateX(${-pos.current}px)`;
+      // High lerp while dragging so cards are glued to finger
+      const lerp = isDragging.current ? B_LERP_DRAG : B_LERP_AUTO;
+      pos.current += (target.current - pos.current) * lerp;
+      strip.style.transform = `translateX(${-pos.current}px)`;
 
-            rafRef.current = requestAnimationFrame(tick);
-        };
+      rafRef.current = requestAnimationFrame(tick);
+    };
 
-        rafRef.current = requestAnimationFrame(tick);
-        return () => cancelAnimationFrame(rafRef.current);
-    }, []);
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, []);
 
-    // ── Button nav — just nudges target; auto-scroll keeps going ─────────────
-    const scrollManual = useCallback((dir: 'prev' | 'next') => {
-        target.current += dir === 'next' ? B_STEP : -B_STEP;
-    }, []);
+  // ── Button nav — just nudges target; auto-scroll keeps going ─────────────
+  const scrollManual = useCallback((dir: 'prev' | 'next') => {
+    target.current += dir === 'next' ? B_STEP : -B_STEP;
+  }, []);
 
-    // ── Pointer drag — incremental delta added each move event ───────────────
-    const onPointerDown = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
-        if (e.button !== 0) return;
-        e.currentTarget.setPointerCapture(e.pointerId);
-        isDragging.current = true;
-        prevDragX.current  = e.clientX;
-        velX.current       = 0;
-        lastMoveX.current  = e.clientX;
-        lastMoveT.current  = performance.now();
-        setGrabbing(true);
-    }, []);
+  // ── Pointer drag — incremental delta added each move event ───────────────
+  const onPointerDown = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.button !== 0) return;
+    e.currentTarget.setPointerCapture(e.pointerId);
+    isDragging.current = true;
+    prevDragX.current = e.clientX;
+    velX.current = 0;
+    lastMoveX.current = e.clientX;
+    lastMoveT.current = performance.now();
+    setGrabbing(true);
+  }, []);
 
-    const onPointerMove = useCallback((e: React.PointerEvent) => {
-        if (!isDragging.current) return;
-        // incremental: add how far the finger moved since last event
-        target.current += prevDragX.current - e.clientX;
-        prevDragX.current = e.clientX;
-        // track velocity for momentum
-        const now = performance.now();
-        const dt  = now - lastMoveT.current;
-        if (dt > 0) velX.current = (lastMoveX.current - e.clientX) / dt;
-        lastMoveX.current = e.clientX;
-        lastMoveT.current = now;
-    }, []);
+  const onPointerMove = useCallback((e: React.PointerEvent) => {
+    if (!isDragging.current) return;
+    // incremental: add how far the finger moved since last event
+    target.current += prevDragX.current - e.clientX;
+    prevDragX.current = e.clientX;
+    // track velocity for momentum
+    const now = performance.now();
+    const dt = now - lastMoveT.current;
+    if (dt > 0) velX.current = (lastMoveX.current - e.clientX) / dt;
+    lastMoveX.current = e.clientX;
+    lastMoveT.current = now;
+  }, []);
 
-    const onPointerUp = useCallback(() => {
-        if (!isDragging.current) return;
-        isDragging.current = false;
-        setGrabbing(false);
-        // momentum throw — coasts to stop, auto-scroll keeps going underneath
-        target.current += velX.current * 100;
-    }, []);
+  const onPointerUp = useCallback(() => {
+    if (!isDragging.current) return;
+    isDragging.current = false;
+    setGrabbing(false);
+    // momentum throw — coasts to stop, auto-scroll keeps going underneath
+    target.current += velX.current * 100;
+  }, []);
 
-    // ── Touch swipe — same incremental approach ───────────────────────────────
-    const onTouchStart = useCallback((e: React.TouchEvent) => {
-        isDragging.current = true;
-        prevDragX.current  = e.touches[0].clientX;
-        velX.current       = 0;
-        lastMoveX.current  = e.touches[0].clientX;
-        lastMoveT.current  = performance.now();
-    }, []);
+  // ── Touch swipe — same incremental approach ───────────────────────────────
+  const onTouchStart = useCallback((e: React.TouchEvent) => {
+    isDragging.current = true;
+    prevDragX.current = e.touches[0].clientX;
+    velX.current = 0;
+    lastMoveX.current = e.touches[0].clientX;
+    lastMoveT.current = performance.now();
+  }, []);
 
-    const onTouchMove = useCallback((e: React.TouchEvent) => {
-        if (!isDragging.current) return;
-        const x = e.touches[0].clientX;
-        target.current += prevDragX.current - x;
-        prevDragX.current = x;
-        const now = performance.now();
-        const dt  = now - lastMoveT.current;
-        if (dt > 0) velX.current = (lastMoveX.current - x) / dt;
-        lastMoveX.current = x;
-        lastMoveT.current = now;
-    }, []);
+  const onTouchMove = useCallback((e: React.TouchEvent) => {
+    if (!isDragging.current) return;
+    const x = e.touches[0].clientX;
+    target.current += prevDragX.current - x;
+    prevDragX.current = x;
+    const now = performance.now();
+    const dt = now - lastMoveT.current;
+    if (dt > 0) velX.current = (lastMoveX.current - x) / dt;
+    lastMoveX.current = x;
+    lastMoveT.current = now;
+  }, []);
 
-    const onTouchEnd = useCallback(() => {
-        isDragging.current = false;
-        target.current += velX.current * 100;
-    }, []);
+  const onTouchEnd = useCallback(() => {
+    isDragging.current = false;
+    target.current += velX.current * 100;
+  }, []);
 
-    return (
-        <section className="py-40 bg-slate-100 overflow-hidden border-t border-black/5 content-defer relative">
-            <div className="absolute inset-0 opacity-[0.015] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+  return (
+    <section className="py-40 bg-slate-100 overflow-hidden border-t border-black/5 content-defer relative">
+      <div className="absolute inset-0 opacity-[0.015] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
 
-            <div className="container mx-auto px-6 text-center mb-16 relative z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="max-w-3xl mx-auto"
-                >
-                    <div className="flex items-center justify-center gap-4 mb-6">
-                        <div className="h-px w-12 bg-agri-gold-500/40" />
-                        <span className="text-agri-gold-500 font-bold text-[10px] uppercase tracking-[0.4em]">The Sovereign Ecosystem</span>
-                        <div className="h-px w-12 bg-agri-gold-500/40" />
+      <div className="container mx-auto px-6 text-center mb-16 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-3xl mx-auto"
+        >
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="h-px w-12 bg-agri-gold-500/40" />
+            <span className="text-agri-gold-500 font-bold text-[10px] uppercase tracking-[0.4em]">The Sovereign Ecosystem</span>
+            <div className="h-px w-12 bg-agri-gold-500/40" />
+          </div>
+          <h2 className="text-4xl md:text-7xl font-serif text-agri-earth-900 mb-8 leading-[1.1]">
+            The <span className="italic text-agri-gold-500">26 Verticals</span> of IGO.
+          </h2>
+          <p className="text-black/50 text-lg font-light leading-relaxed max-w-xl mx-auto">
+            A sovereign agricultural ecosystem covering Engineering, Production, Trade, and Consumer Lifestyle.
+          </p>
+        </motion.div>
+
+        {/* Nav buttons */}
+        <div className="flex items-center justify-center gap-4 mt-10">
+          <button
+            onClick={() => scrollManual('prev')}
+            aria-label="Previous brands"
+            className="w-12 h-12 rounded-full border border-black/10 bg-white hover:bg-agri-gold-500 hover:border-agri-gold-500 flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md group"
+          >
+            <ChevronLeft className="w-5 h-5 text-black/40 group-hover:text-black transition-colors" />
+          </button>
+          <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/30">Explore all 26 verticals</span>
+          <button
+            onClick={() => scrollManual('next')}
+            aria-label="Next brands"
+            className="w-12 h-12 rounded-full border border-black/10 bg-white hover:bg-agri-gold-500 hover:border-agri-gold-500 flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md group"
+          >
+            <ChevronRight className="w-5 h-5 text-black/40 group-hover:text-black transition-colors" />
+          </button>
+        </div>
+      </div>
+
+      {/* Track — overflow:hidden so nothing is scrollable; transform moves the strip */}
+      <div className="relative py-10 overflow-hidden">
+        {/* Edge fades */}
+        <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-slate-100 to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-slate-100 to-transparent z-10 pointer-events-none" />
+
+        {/* Strip */}
+        <div
+          ref={stripRef}
+          className="flex gap-8 pl-8 will-change-transform select-none"
+          style={{ cursor: grabbing ? "grabbing" : "grab" }}
+          onPointerDown={onPointerDown}
+          onPointerMove={onPointerMove}
+          onPointerUp={onPointerUp}
+          onPointerCancel={onPointerUp}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
+        >
+          {displayBrands.map((b, i) => (
+            <div
+              key={`${b.id}-${i}`}
+              className="shrink-0 w-80 group bg-white border border-black/8 hover:border-agri-gold-500/40 rounded-[2.5rem] p-8 transition-all duration-700 hover:-translate-y-4 hover:shadow-2xl hover:shadow-black/10 flex flex-col"
+            >
+              <div className="w-full h-40 rounded-3xl bg-slate-50 border border-black/5 flex items-center justify-center mb-8 p-6 transition-all duration-500 group-hover:bg-white group-hover:border-black/10 overflow-hidden relative">
+                {b.logo ? (
+                  <img
+                    src={b.logo}
+                    alt={b.name}
+                    className="max-w-full max-h-full w-auto h-auto object-contain transition-transform duration-700 group-hover:scale-110"
+                  />
+                ) : (
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center bg-slate-100">
+                      <Box className="w-6 h-6 text-black/20" />
                     </div>
-                    <h2 className="text-4xl md:text-7xl font-serif text-agri-earth-900 mb-8 leading-[1.1]">
-                        The <span className="italic text-agri-gold-500">26 Verticals</span> of IGO.
-                    </h2>
-                    <p className="text-black/50 text-lg font-light leading-relaxed max-w-xl mx-auto">
-                        A sovereign agricultural ecosystem covering Engineering, Production, Trade, and Consumer Lifestyle.
-                    </p>
-                </motion.div>
-
-                {/* Nav buttons */}
-                <div className="flex items-center justify-center gap-4 mt-10">
-                    <button
-                        onClick={() => scrollManual('prev')}
-                        aria-label="Previous brands"
-                        className="w-12 h-12 rounded-full border border-black/10 bg-white hover:bg-agri-gold-500 hover:border-agri-gold-500 flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md group"
-                    >
-                        <ChevronLeft className="w-5 h-5 text-black/40 group-hover:text-black transition-colors" />
-                    </button>
-                    <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-black/30">Explore all 26 verticals</span>
-                    <button
-                        onClick={() => scrollManual('next')}
-                        aria-label="Next brands"
-                        className="w-12 h-12 rounded-full border border-black/10 bg-white hover:bg-agri-gold-500 hover:border-agri-gold-500 flex items-center justify-center transition-all duration-300 shadow-sm hover:shadow-md group"
-                    >
-                        <ChevronRight className="w-5 h-5 text-black/40 group-hover:text-black transition-colors" />
-                    </button>
-                </div>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-black/30 text-center">Development <br /> In Progress</span>
+                  </div>
+                )}
+                {!b.logo && (
+                  <div className="absolute inset-0 bg-agri-gold-500/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span className="px-4 py-2 bg-agri-gold-500 text-black text-[9px] font-bold uppercase tracking-widest rounded-full">Coming Soon</span>
+                  </div>
+                )}
+              </div>
+              <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-agri-gold-500 mb-3">{b.tag}</div>
+              <h3 className="text-lg font-bold text-agri-earth-900 mb-4 group-hover:text-agri-gold-500 transition-colors uppercase tracking-tight">{b.name}</h3>
+              <p className="text-[12px] text-black/40 group-hover:text-black/60 leading-relaxed mb-6 flex-1 line-clamp-3 font-light">{b.desc}</p>
+              <div className="pt-4 border-t border-black/5 flex items-center justify-between">
+                <span className={`text-[9px] font-bold uppercase tracking-widest ${b.logo ? 'text-agri-gold-500' : 'text-black/20'}`}>
+                  {b.logo ? 'Active Division' : 'Strategic Tier'}
+                </span>
+                <ArrowRight className="w-4 h-4 text-black/20 group-hover:text-agri-gold-500 transition-all group-hover:translate-x-1" />
+              </div>
             </div>
-
-            {/* Track — overflow:hidden so nothing is scrollable; transform moves the strip */}
-            <div className="relative py-10 overflow-hidden">
-                {/* Edge fades */}
-                <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-slate-100 to-transparent z-10 pointer-events-none" />
-                <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-slate-100 to-transparent z-10 pointer-events-none" />
-
-                {/* Strip */}
-                <div
-                    ref={stripRef}
-                    className="flex gap-8 pl-8 will-change-transform select-none"
-                    style={{ cursor: grabbing ? "grabbing" : "grab" }}
-                    onPointerDown={onPointerDown}
-                    onPointerMove={onPointerMove}
-                    onPointerUp={onPointerUp}
-                    onPointerCancel={onPointerUp}
-                    onTouchStart={onTouchStart}
-                    onTouchMove={onTouchMove}
-                    onTouchEnd={onTouchEnd}
-                >
-                    {displayBrands.map((b, i) => (
-                        <div
-                            key={`${b.id}-${i}`}
-                            className="shrink-0 w-80 group bg-white border border-black/8 hover:border-agri-gold-500/40 rounded-[2.5rem] p-8 transition-all duration-700 hover:-translate-y-4 hover:shadow-2xl hover:shadow-black/10 flex flex-col"
-                        >
-                            <div className="w-full h-40 rounded-3xl bg-slate-50 border border-black/5 flex items-center justify-center mb-8 p-6 transition-all duration-500 group-hover:bg-white group-hover:border-black/10 overflow-hidden relative">
-                                {b.logo ? (
-                                    <img
-                                        src={b.logo}
-                                        alt={b.name}
-                                        className="max-w-full max-h-full w-auto h-auto object-contain transition-transform duration-700 group-hover:scale-110"
-                                    />
-                                ) : (
-                                    <div className="flex flex-col items-center gap-3">
-                                        <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center bg-slate-100">
-                                            <Box className="w-6 h-6 text-black/20" />
-                                        </div>
-                                        <span className="text-[10px] font-bold uppercase tracking-widest text-black/30 text-center">Development <br /> In Progress</span>
-                                    </div>
-                                )}
-                                {!b.logo && (
-                                    <div className="absolute inset-0 bg-agri-gold-500/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                                        <span className="px-4 py-2 bg-agri-gold-500 text-black text-[9px] font-bold uppercase tracking-widest rounded-full">Coming Soon</span>
-                                    </div>
-                                )}
-                            </div>
-                            <div className="text-[10px] font-bold uppercase tracking-[0.3em] text-agri-gold-500 mb-3">{b.tag}</div>
-                            <h3 className="text-lg font-bold text-agri-earth-900 mb-4 group-hover:text-agri-gold-500 transition-colors uppercase tracking-tight">{b.name}</h3>
-                            <p className="text-[12px] text-black/40 group-hover:text-black/60 leading-relaxed mb-6 flex-1 line-clamp-3 font-light">{b.desc}</p>
-                            <div className="pt-4 border-t border-black/5 flex items-center justify-between">
-                                <span className={`text-[9px] font-bold uppercase tracking-widest ${b.logo ? 'text-agri-gold-500' : 'text-black/20'}`}>
-                                    {b.logo ? 'Active Division' : 'Strategic Tier'}
-                                </span>
-                                <ArrowRight className="w-4 h-4 text-black/20 group-hover:text-agri-gold-500 transition-all group-hover:translate-x-1" />
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 
@@ -1029,8 +1030,6 @@ const Index = () => {
       <EngineeringDNA />
 
       <BrandsSection />
-
-      <IndiaPresence />
     </div>
   );
 };
