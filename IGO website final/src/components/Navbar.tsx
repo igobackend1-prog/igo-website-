@@ -1,23 +1,27 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { navLinks, companyInfo } from "@/data/siteData";
-import { motion, AnimatePresence, LayoutGroup, Variants } from "framer-motion";
-import { Menu, X, ChevronDown, ChevronRight, Leaf, Droplets, Fish, Settings, ArrowRight, ShieldCheck, Truck } from "lucide-react";
+import { motion, AnimatePresence, LayoutGroup, Variants, useScroll, useSpring } from "framer-motion";
+import { Menu, X, ChevronDown, ChevronRight, ArrowRight, Globe } from "lucide-react";
 
 // Animation Variants
 const dropdownVars: Variants = {
-  initial: { opacity: 0, y: 10 },
+  initial: { opacity: 0, y: 15, scale: 0.98 },
   animate: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.3, ease: "easeOut" }
+    scale: 1,
+    transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
   },
   exit: { 
     opacity: 0, 
     y: 10,
+    scale: 0.98,
     transition: { duration: 0.2 }
   }
 };
+
+const HUB  = "#b87333";
 
 // Helper components for the Mega Menu
 const MegaMenu = ({ link }: { link: any }) => {
@@ -30,144 +34,144 @@ const MegaMenu = ({ link }: { link: any }) => {
       initial="initial"
       animate="animate"
       exit="exit"
-      className="absolute top-full left-0 right-0 pt-4 cursor-default"
+      className="absolute top-full left-0 right-0 pt-6 cursor-default"
     >
-      <div className="bg-white border border-black/10 shadow-[0_40px_80px_rgba(0,0,0,0.1)] rounded-[2.5rem] overflow-hidden flex h-[550px] w-full max-w-7xl mx-auto backdrop-blur-xl bg-white/98">
+      <div className="bg-white/95 border border-black/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] rounded-[3.5rem] overflow-hidden flex h-[600px] w-full max-w-7xl mx-auto backdrop-blur-3xl ring-1 ring-white/20">
         {/* Level 2: Sectors Sidebar */}
-        <div className="w-[380px] bg-slate-50 border-r border-black/[0.05] p-6 flex flex-col gap-2 shrink-0">
-          <div className="text-[10px] uppercase tracking-[0.2em] font-bold text-black/30 mb-4 px-4 mt-2">Sectors</div>
+        <div className="w-[420px] bg-agri-earth-50/50 border-r border-black/[0.05] p-10 flex flex-col gap-3 shrink-0">
+          <div className="text-[11px] uppercase tracking-[0.4em] font-black text-agri-earth-900/30 mb-6 px-4">DEPARTMENTS</div>
           {link.children.map((sector: any) => (
             <Link
               key={sector.label}
               to={sector.href}
               onMouseEnter={() => setActiveSector(sector.label)}
-              className={`flex items-center gap-4 px-5 py-4 rounded-xl transition-all duration-200 text-left relative group ${
+              className={`flex items-center gap-6 px-6 py-5 rounded-[2rem] transition-all duration-300 text-left relative group ${
                 activeSector === sector.label 
-                  ? "text-primary font-bold" 
-                  : "text-black/60 hover:text-black hover:bg-black/[0.02]"
+                  ? "text-agri-green-900 shadow-[0_15px_30px_-10px_rgba(0,0,0,0.05)]" 
+                  : "text-agri-earth-900/60 hover:text-agri-earth-900 hover:bg-white/50"
               }`}
             >
               {activeSector === sector.label && (
                 <motion.div 
-                  layoutId="active-pill"
-                  className="absolute inset-0 bg-white shadow-sm ring-1 ring-black/5 rounded-xl"
-                  transition={{ type: "spring", bounce: 0.1, duration: 0.5 }}
+                  layoutId="active-nav-pill"
+                  className="absolute inset-0 bg-white rounded-[2rem] shadow-sm ring-1 ring-black/5"
+                  transition={{ type: "spring", bounce: 0.1, duration: 0.6 }}
                 />
               )}
-              <div className={`relative z-10 w-12 h-12 shrink-0 rounded-full overflow-hidden flex items-center justify-center border border-black/5 shadow-sm bg-white transition-transform duration-300 ${activeSector === sector.label ? "scale-110 shadow-md ring-2 ring-primary/20" : "group-hover:scale-110"}`}>
+              <div className={`relative z-10 w-14 h-14 shrink-0 rounded-2xl overflow-hidden flex items-center justify-center border border-black/5 shadow-sm bg-white transition-all duration-500 ${activeSector === sector.label ? "scale-110 shadow-lg ring-4 ring-agri-green-900/5 rotate-3" : "group-hover:scale-110 group-hover:-rotate-3"}`}>
                 {sector.icon && typeof sector.icon === 'string' && sector.icon.startsWith('/') ? (
-                  <img src={sector.icon} alt={sector.label} loading="lazy" className="w-full h-full object-cover object-center" />
+                  <img src={sector.icon} alt={sector.label} loading="lazy" className="w-full h-full object-cover" />
                 ) : (
-                  <span className="text-2xl drop-shadow-sm">{sector.icon}</span>
+                  <span className="text-3xl drop-shadow-sm">{sector.icon}</span>
                 )}
               </div>
-              <span className={`relative z-10 text-[15px] leading-tight transition-colors ${activeSector === sector.label ? "text-primary font-bold" : "text-black/70 font-medium group-hover:text-black"}`}>{sector.label}</span>
-              <ChevronRight className={`relative z-10 ml-auto w-5 h-5 transition-all opacity-0 ${activeSector === sector.label ? "opacity-100 text-primary translate-x-0" : "-translate-x-2 group-hover:opacity-40"}`} />
+              <div className="relative z-10 flex flex-col gap-1">
+                <span className={`text-[17px] tracking-tighter leading-tight transition-colors ${activeSector === sector.label ? "text-agri-green-900 font-black" : "text-agri-earth-700 font-bold"}`}>{sector.label}</span>
+                <span className="text-[10px] uppercase tracking-widest text-agri-earth-900/40 font-black">Explore Vertical</span>
+              </div>
+              <ChevronRight className={`relative z-10 ml-auto w-5 h-5 transition-all opacity-0 ${activeSector === sector.label ? "opacity-100 text-agri-green-900 translate-x-0" : "-translate-x-2 group-hover:opacity-40"}`} />
             </Link>
           ))}
         </div>
 
         {/* Level 3 & 4: Sub-sectors and Projects */}
-        <div className="flex-1 p-10 overflow-y-auto bg-white custom-scrollbar w-full">
+        <div className="flex-1 p-16 overflow-y-auto bg-white/40 custom-scrollbar w-full">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeSector}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3 }}
             >
-              <div className="flex items-center justify-between mb-8 pb-6 border-b border-black/5">
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-full overflow-hidden border border-black/10 shadow-lg bg-white flex items-center justify-center p-0.5 shrink-0">
-                    <div className="w-full h-full rounded-full overflow-hidden">
+              <div className="flex items-end justify-between mb-12 pb-8 border-b border-black/5">
+                <div className="flex items-center gap-6">
+                  <div className="w-20 h-20 rounded-[2rem] overflow-hidden border-4 border-white shadow-2xl bg-white flex items-center justify-center p-1 shrink-0 rotate-3 transition-transform hover:rotate-0 duration-500">
+                    <div className="w-full h-full rounded-[1.5rem] overflow-hidden bg-agri-earth-50">
                       {currentSector.icon && typeof currentSector.icon === 'string' && currentSector.icon.startsWith('/') ? (
-                        <img src={currentSector.icon} alt={currentSector.label} loading="lazy" className="w-full h-full object-cover object-center" />
+                        <img src={currentSector.icon} alt={currentSector.label} loading="lazy" className="w-full h-full object-cover" />
                       ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-slate-50">
-                          <span className="text-3xl drop-shadow-md">{currentSector.icon}</span>
+                        <div className="w-full h-full flex items-center justify-center">
+                          <span className="text-4xl">{currentSector.icon}</span>
                         </div>
                       )}
                     </div>
                   </div>
-                  <div>
-                    <h3 className="text-2xl font-black tracking-tight text-black">
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-4xl font-black tracking-tighter text-agri-earth-900">
                       {currentSector.label}
                     </h3>
-                    <p className="text-sm text-black/50 font-medium mt-1">Explore all sub-categories and projects</p>
+                    <p className="text-base text-agri-earth-900/50 font-medium">Precision engineering for industrial scale excellence.</p>
                   </div>
                 </div>
                 <Link 
                   to={currentSector.href}
-                  className="flex items-center gap-2 text-xs font-bold text-primary hover:gap-3 transition-all uppercase tracking-widest bg-primary/5 px-4 py-2 rounded-full"
+                  className="flex items-center gap-3 text-xs font-black text-agri-green-900 hover:gap-5 transition-all uppercase tracking-[0.2em] bg-agri-green-900/5 px-8 py-4 rounded-full border border-agri-green-900/10"
                 >
-                  View All <ArrowRight className="w-4 h-4" />
+                  View Details <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-8 gap-y-10">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-x-12 gap-y-12">
                 {currentSector.children?.map((subSector: any) => (
-                  <div key={subSector.label} className="flex flex-col gap-4">
+                  <div key={subSector.label} className="flex flex-col gap-6 group/item">
                     {subSector.children ? (
-                      /* Deep Hierarchical Structure (4-Layers) */
                       <>
                         <Link 
                           to={subSector.href}
-                          className="flex items-center gap-3 text-[14px] font-bold text-black border-b border-black/5 pb-3 mb-2 w-full hover:text-primary transition-colors group/sub"
+                          className="flex items-center gap-4 text-[16px] font-black text-agri-earth-900 border-b-2 border-transparent hover:border-agri-green-900/20 pb-4 mb-2 w-full hover:text-agri-green-900 transition-all group/sub"
                         >
                           {subSector.icon ? (
-                            <div className="w-8 h-8 rounded-xl bg-slate-50 border border-black/5 flex items-center justify-center text-primary shadow-sm shrink-0 overflow-hidden group-hover/sub:scale-110 transition-transform">
+                            <div className="w-10 h-10 rounded-xl bg-agri-earth-50 border border-black/5 flex items-center justify-center text-agri-green-900 shadow-sm shrink-0 overflow-hidden group-hover/sub:scale-110 transition-transform">
                               {typeof subSector.icon === 'string' && subSector.icon.startsWith('/') ? (
-                                <img src={subSector.icon} loading="lazy" className="w-full h-full object-cover object-center" alt="" />
+                                <img src={subSector.icon} loading="lazy" className="w-full h-full object-cover" alt="" />
                               ) : typeof subSector.icon === 'string' ? (
-                                <span className="text-lg">{subSector.icon}</span>
+                                <span className="text-xl">{subSector.icon}</span>
                               ) : (
-                                <subSector.icon className="w-4 h-4" strokeWidth={2} />
+                                <subSector.icon className="w-5 h-5" strokeWidth={2.5} />
                               )}
                             </div>
                           ) : (
-                            <div className="w-2 h-2 rounded-full bg-primary/40 shrink-0" />
+                            <div className="w-2.5 h-2.5 rounded-full bg-agri-green-900/40 shrink-0" />
                           )}
-                          <span className="leading-tight">{subSector.label}</span>
-                          <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover/sub:opacity-100 ml-auto transition-all -translate-x-2 group-hover/sub:translate-x-0" />
+                          <span className="tracking-tight">{subSector.label}</span>
                         </Link>
                         
-                        <div className="flex flex-col gap-1.5 pl-11">
+                        <div className="flex flex-col gap-3 pl-14">
                           {subSector.children.map((project: any) => (
                             <Link
                               key={project.label}
                               to={project.href}
-                              className="text-[13px] font-medium text-black/60 hover:text-primary transition-all flex items-center gap-2 group/project py-0.5"
+                              className="text-[14px] font-bold text-agri-earth-900/50 hover:text-agri-green-900 transition-all flex items-center gap-3 group/project"
                             >
-                              <span className="w-1.5 h-1.5 rounded-full bg-black/20 group-hover/project:bg-primary shrink-0 transition-colors" />
-                              <span className="group-hover/project:translate-x-0.5 transition-transform leading-tight">{project.label}</span>
+                              <div className="w-1.5 h-1.5 rounded-full bg-agri-earth-200 group-hover/project:bg-agri-green-900 group-hover/project:scale-125 transition-all" />
+                              <span className="group-hover/project:translate-x-1 transition-transform">{project.label}</span>
                             </Link>
                           ))}
                         </div>
                       </>
                     ) : (
-                      /* Direct Leaf-Node Structure (3-Layers or Simple Links) */
                       <Link
                         to={subSector.href}
-                        className="flex items-center gap-4 group/service bg-slate-50/40 hover:bg-slate-50 border border-black/5 hover:border-black/10 rounded-2xl p-4 transition-all shadow-[0_2px_8px_rgba(0,0,0,0.02)] hover:shadow-md"
+                        className="flex items-center gap-5 bg-white/50 hover:bg-white border border-black/5 hover:border-agri-green-900/20 rounded-[2.5rem] p-6 transition-all shadow-[0_10px_30px_rgba(0,0,0,0.03)] hover:shadow-xl hover:-translate-y-1"
                       >
-                         <div className="w-12 h-12 rounded-xl bg-white border border-black/5 flex items-center justify-center text-black/40 group-hover/service:text-primary shadow-sm shrink-0 transition-colors overflow-hidden">
+                         <div className="w-16 h-16 rounded-2xl bg-agri-earth-50 border border-black/5 flex items-center justify-center text-agri-earth-900/40 group-hover/item:text-agri-green-900 shadow-inner shrink-0 transition-all overflow-hidden">
                             {(subSector.icon || subSector.image) && typeof (subSector.icon || subSector.image) === 'string' && (subSector.icon || subSector.image).startsWith('/') ? (
-                              <img src={subSector.icon || subSector.image} loading="lazy" className="w-full h-full object-cover object-center rounded-xl" alt="" />
+                              <img src={subSector.icon || subSector.image} loading="lazy" className="w-full h-full object-cover group-hover/item:scale-125 transition-transform duration-700" alt="" />
                             ) : typeof subSector.icon === 'string' ? (
-                              <span className="text-xl">{subSector.icon}</span>
+                              <span className="text-3xl">{subSector.icon}</span>
                             ) : subSector.icon ? (
-                              <subSector.icon className="w-6 h-6" strokeWidth={1.5} />
+                              <subSector.icon className="w-8 h-8" strokeWidth={1.5} />
                             ) : (
-                              <div className="w-2 h-2 rounded-full bg-primary/40" />
+                              <Globe className="w-8 h-8 opacity-20" />
                             )}
                          </div>
                          <div className="flex flex-col gap-1 pr-2">
-                           <span className="text-[14px] font-bold text-black group-hover/service:text-primary transition-colors leading-tight">
+                           <span className="text-[16px] font-black text-agri-earth-900 group-hover/item:text-agri-green-900 transition-colors tracking-tighter">
                              {subSector.label}
                            </span>
-                           <span className="text-[11px] text-black/40 font-medium line-clamp-1 uppercase tracking-wider">
-                             View Details
+                           <span className="text-[10px] text-agri-earth-900/30 font-black uppercase tracking-[0.2em]">
+                             EXPLORE PORTFOLIO
                            </span>
                          </div>
                       </Link>
@@ -183,78 +187,15 @@ const MegaMenu = ({ link }: { link: any }) => {
   );
 };
 
-
-const MobileNavLink = ({ link, depth = 0 }: { link: any, depth?: number }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const hasChildren = link.children && link.children.length > 0;
-
-  const fontSize = depth === 0 ? "text-xl font-black" : depth === 1 ? "text-lg font-bold text-black/80" : depth === 2 ? "text-base font-semibold text-black/60" : "text-sm font-medium text-black/40";
-  const py = depth === 0 ? "py-4" : "py-3";
-
-  return (
-    <div className="flex flex-col">
-      <div 
-        className={`flex items-center justify-between border-b border-black/5 ${py} ${fontSize}`}
-      >
-        <Link 
-          to={link.href} 
-          className="flex items-center gap-3 flex-1"
-          onClick={() => {
-            if (!hasChildren) setIsOpen(false);
-          }}
-        >
-          {link.icon && typeof link.icon === 'string' && link.icon.startsWith('/') ? (
-            <img src={link.icon} alt="" loading="lazy" className={`object-contain opacity-70 ${depth === 0 ? "w-6 h-6" : "w-5 h-5"}`} />
-          ) : link.icon && typeof link.icon !== 'string' ? (
-            <link.icon className={`opacity-70 ${depth === 0 ? "w-6 h-6" : "w-5 h-5"}`} />
-          ) : (
-            <span className="opacity-80">{link.icon}</span>
-          )}
-          <span className={depth > 0 ? "tracking-tight" : ""}>{link.label}</span>
-        </Link>
-        {hasChildren && (
-          <button 
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setIsOpen(!isOpen);
-            }}
-            className="p-2 -mr-2"
-          >
-            <motion.div animate={{ rotate: isOpen ? 180 : 0 }}>
-              <ChevronDown className="w-5 h-5 opacity-30" />
-            </motion.div>
-          </button>
-        )}
-      </div>
-      
-      <AnimatePresence>
-        {isOpen && hasChildren && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="overflow-hidden bg-slate-50"
-          >
-            <div className={`pl-${Math.min((depth + 1) * 4, 8)} pr-4 py-2 flex flex-col`}>
-              {/* Optional: Add a "View All" link for the current category in mobile if needed */}
-              {link.children.map((child: any) => (
-                <MobileNavLink key={child.label} link={child} depth={depth + 1} />
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  );
-};
-
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const hoverTimeout = useRef<NodeJS.Timeout | null>(null);
   
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+
   const handleMouseEnter = (label: string) => {
     if (hoverTimeout.current) clearTimeout(hoverTimeout.current);
     setOpenDropdown(label);
@@ -263,15 +204,14 @@ const Navbar = () => {
   const handleMouseLeave = () => {
     hoverTimeout.current = setTimeout(() => {
       setOpenDropdown(null);
-    }, 300); // 300ms delay forgiving hover UX
+    }, 300);
   };
   
   const location = useLocation();
-  const isHome = location.pathname === "/";
   const isAdmin = location.pathname.startsWith("/admin");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -283,25 +223,44 @@ const Navbar = () => {
 
   if (isAdmin) return null;
 
-  const navClasses = "bg-white py-0";
-
-  const textColorClass = "text-black";
-  const linkColorClass = "text-black/70";
-  const logoInvertClass = "";
-
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navClasses}`}>
-      <div className="container mx-auto px-6 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-4 group z-50">
-          <img src={companyInfo.logo} alt="IGO Logo" loading="eager" className={`h-24 w-auto group-hover:scale-105 transition-transform mix-blend-multiply contrast-125 brightness-105 ${logoInvertClass}`} />
-          <span className={`text-2xl font-black tracking-tight uppercase font-display whitespace-nowrap ${textColorClass}`}>IGO <span className="text-primary">Agritech</span></span>
+    <nav 
+      className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${
+        scrolled 
+          ? "py-4 bg-white/80 backdrop-blur-3xl border-b border-black/[0.03] shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)]" 
+          : "py-8 bg-transparent"
+      }`}
+    >
+      {/* Scroll Progress Bar */}
+      <motion.div className="absolute top-0 left-0 right-0 h-[3px] bg-agri-gold-500 origin-left z-[110]" style={{ scaleX }} />
+
+      <div className="container mx-auto px-8 flex items-center justify-between">
+        <Link to="/" className="flex items-center gap-6 group relative z-[120]">
+          <div className="relative">
+            <div className="absolute inset-0 bg-agri-green-900/10 blur-xl rounded-full scale-150 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <img 
+              src={companyInfo.logo} 
+              alt="IGO Logo" 
+              loading="eager" 
+              className={`h-24 md:h-28 w-auto relative z-10 transition-all duration-700 mix-blend-multiply group-hover:scale-110 group-hover:drop-shadow-2xl`} 
+            />
+          </div>
+          <div className="flex flex-col mt-2">
+            <span className={`text-3xl font-black tracking-tighter uppercase font-display whitespace-nowrap text-agri-earth-900`}>
+              IGO <span className="text-agri-green-800">Agritech</span>
+            </span>
+            <span className="text-[10px] font-bold text-agri-gold-600 tracking-[0.4em] uppercase -mt-1 scale-90 origin-left">
+              India's Vision. Global Impact.
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-8 ml-16">
+        <div className="hidden xl:flex items-center gap-12 ml-auto">
           <LayoutGroup>
             {navLinks.map((link) => {
               const isMega = link.label === "Projects" || link.label === "Services" || link.label === "Products";
+              const isActive = openDropdown === link.label;
               
               return (
                 <div 
@@ -312,32 +271,39 @@ const Navbar = () => {
                 >
                   <Link
                     to={link.href}
-                    className={`text-sm font-semibold whitespace-nowrap ${linkColorClass} hover:text-primary transition-all py-2 flex items-center gap-1 group`}
+                    className={`text-[15px] font-black tracking-tight whitespace-nowrap transition-all py-4 flex items-center gap-2 group/nav ${
+                      isActive ? "text-agri-green-800" : "text-agri-earth-900/70 hover:text-agri-earth-900"
+                    }`}
                   >
                     {link.label}
-                    {link.children && <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-300 ${openDropdown === link.label ? "rotate-180 text-primary" : "opacity-30 group-hover:opacity-100"}`} />}
+                    {link.children && (
+                      <ChevronDown className={`w-4 h-4 transition-all duration-500 ${
+                        isActive ? "rotate-180 text-agri-green-800" : "opacity-30 group-hover/nav:opacity-100 group-hover/nav:translate-y-0.5"
+                      }`} />
+                    )}
                   </Link>
 
                   <AnimatePresence>
-                    {openDropdown === link.label && link.children && (
-                      <div className={isMega ? "" : "absolute top-full left-1/2 -translate-x-1/2 pt-4"}>
+                    {isActive && link.children && (
+                      <div className={isMega ? "" : "absolute top-full left-1/2 -translate-x-1/2 pt-6"}>
                         {isMega ? (
                           <MegaMenu link={link} />
                         ) : (
                           <motion.div 
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 10 }}
-                            className="bg-white border border-black/10 shadow-[0_20px_40px_rgba(0,0,0,0.08)] rounded-2xl p-2 w-56 overflow-hidden"
+                            variants={dropdownVars}
+                            initial="initial" animate="animate" exit="exit"
+                            className="bg-white/95 border border-black/10 shadow-[0_30px_60px_-10px_rgba(0,0,0,0.15)] rounded-[2.5rem] p-4 w-72 backdrop-blur-2xl ring-1 ring-white/20"
                           >
                             {link.children.map((child: any) => (
                               <Link
                                 key={child.label}
                                 to={child.href}
-                                className="flex items-center justify-between px-4 py-3 rounded-lg hover:bg-black/[0.02] transition-colors group/item"
+                                className="flex items-center justify-between px-6 py-4 rounded-2xl hover:bg-agri-green-900/5 transition-all group/item"
                               >
-                                <span className="text-[13px] font-medium text-black/70 group-hover/item:text-black">{child.label}</span>
-                                <ChevronRight className="w-3.5 h-3.5 opacity-0 group-hover/item:opacity-30 transition-all -translate-x-2 group-hover/item:translate-x-0" />
+                                <div className="flex flex-col gap-1">
+                                  <span className="text-[14px] font-bold text-agri-earth-900 group-hover/item:text-agri-green-800 transition-colors">{child.label}</span>
+                                </div>
+                                <ChevronRight className="w-4 h-4 opacity-0 group-hover/item:opacity-40 transition-all -translate-x-3 group-hover/item:translate-x-0" />
                               </Link>
                             ))}
                           </motion.div>
@@ -352,44 +318,76 @@ const Navbar = () => {
           
           <Link
             to="/agri-startup-platform"
-            className="px-5 py-2.5 text-xs font-semibold rounded-full transition-all uppercase tracking-widest bg-black text-white shadow-lg shadow-black/10 whitespace-nowrap"
+            className="group relative px-8 py-4 bg-agri-earth-900 rounded-[2rem] overflow-hidden shadow-2xl transition-all duration-500 hover:shadow-agri-green-900/20 hover:-translate-y-1"
           >
-            AgriStartup Gateway
+            <div className="absolute inset-0 bg-gradient-to-r from-agri-green-800 to-agri-green-900 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <span className="relative z-10 text-[13px] font-black text-white uppercase tracking-[0.25em] flex items-center gap-3">
+              AgriStartup Gateway
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-2" />
+            </span>
+            <div className="absolute -inset-1 bg-gradient-to-r from-agri-gold-500/20 to-transparent blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
           </Link>
         </div>
 
         {/* Mobile Toggle */}
         <button 
           onClick={() => setMobileOpen(!mobileOpen)}
-          className={`lg:hidden p-2 z-50 rounded-full hover:bg-black/5 transition-colors ${textColorClass}`}
+          className={`xl:hidden p-4 z-[120] rounded-2xl bg-agri-earth-900/5 hover:bg-agri-earth-900/10 transition-all text-agri-earth-900`}
         >
-          {mobileOpen ? <X className="w-6 h-6 text-black" /> : <Menu className="w-6 h-6" />}
+          {mobileOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu — Premium Drawer */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
             initial={{ opacity: 0, x: "100%" }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
-            className="fixed inset-0 bg-white z-40 flex flex-col p-6 pt-24 overflow-y-auto"
+            transition={{ type: "spring", damping: 30, stiffness: 200 }}
+            className="fixed inset-0 bg-white z-[110] flex flex-col p-10 pt-40 overflow-y-auto"
           >
-            <div className="flex flex-col">
+            {/* Background design elements */}
+            <div className="absolute top-0 right-0 w-[30rem] h-[30rem] bg-agri-green-900/5 rounded-full blur-[8rem] -translate-y-1/3 translate-x-1/3 pointer-events-none" />
+            
+            <div className="flex flex-col gap-2">
+              <span className="text-[11px] font-black tracking-[0.5em] text-agri-earth-900/20 mb-6 uppercase">Navigation Menu</span>
               {navLinks.map((link) => (
-                <MobileNavLink key={link.label} link={link} />
+                <div key={link.label} className="border-b border-black/5 py-6">
+                   <Link to={link.href} className="text-4xl font-black tracking-tighter text-agri-earth-900 hover:text-agri-green-900 transition-colors flex items-center justify-between group">
+                     {link.label}
+                     <ArrowRight className="w-8 h-8 opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
+                   </Link>
+                </div>
               ))}
               
-              <div className="mt-8 pt-8 border-t border-black/5">
+              <div className="mt-16 group">
                 <Link 
                    to="/agri-startup-platform" 
-                   className="flex items-center justify-between p-6 bg-black text-white rounded-2xl font-bold text-lg"
+                   className="flex items-center justify-between p-10 bg-agri-earth-900 text-white rounded-[3rem] font-black text-2xl shadow-2xl transition-all hover:bg-agri-green-900 hover:-translate-y-2"
                 >
-                  <span>Agri Startup Hub</span>
-                  <ArrowRight className="w-5 h-5 text-primary" />
+                  <div className="flex flex-col gap-2">
+                    <span className="text-[11px] font-black tracking-[0.3em] opacity-40 uppercase">Startup Hub</span>
+                    <span>Agri Startup Gateway</span>
+                  </div>
+                  <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center">
+                    <ArrowRight className="w-8 h-8 text-agri-gold-500" />
+                  </div>
                 </Link>
               </div>
+            </div>
+            
+            <div className="mt-auto pt-16 flex items-center justify-between border-t border-black/5">
+               <div className="flex flex-col gap-1">
+                 <span className="text-[10px] font-black text-agri-earth-900/30 tracking-widest uppercase">Contact Support</span>
+                 <span className="text-sm font-bold text-agri-earth-900">connect@igoagritech.com</span>
+               </div>
+               <div className="flex gap-4">
+                 <div className="w-12 h-12 rounded-full border border-black/5 flex items-center justify-center">
+                   <Globe className="w-5 h-5 opacity-40" />
+                 </div>
+               </div>
             </div>
           </motion.div>
         )}
